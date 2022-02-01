@@ -517,7 +517,7 @@ function h5activityIndex() {
 async function doAppTask(type = '1') {
   let body = {
     "pageClickKey": "CouponCenter",
-    "childActivityUrl": "openapp.jdmobile%3a%2f%2fvirtual%3fparams%3d%7b%5c%22category%5c%22%3a%5c%22jump%5c%22%2c%5c%22des%5c%22%3a%5c%22couponCenter%5c%22%7d",
+    "childActivityUrl": "openapp.jdmobile%3a%2f%2fvirtual%3f11111128%3d%7b%5c%22category%5c%22%3a%5c%22jump%5c%22%2c%5c%22des%5c%22%3a%5c%22couponCenter%5c%22%7d",
     "lat": "",
     "globalLat": "",
     "lng": "",
@@ -530,7 +530,7 @@ async function doAppTask(type = '1') {
     "monitorSource": "ccgroup_ios_index_task",
     "monitorRefer": "",
     "taskType": "1",
-    "childActivityUrl": "openapp.jdmobile%3a%2f%2fvirtual%3fparams%3d%7b%5c%22category%5c%22%3a%5c%22jump%5c%22%2c%5c%22des%5c%22%3a%5c%22couponCenter%5c%22%7d",
+    "childActivityUrl": "openapp.jdmobile%3a%2f%2fvirtual%3f11111128%3d%7b%5c%22category%5c%22%3a%5c%22jump%5c%22%2c%5c%22des%5c%22%3a%5c%22couponCenter%5c%22%7d",
     "pageClickKey": "CouponCenter",
     "lat": "",
     "taskId": "727",

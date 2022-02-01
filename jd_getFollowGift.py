@@ -285,7 +285,7 @@ def telegram_bot(title, content):
             proxyStr = "http://{}:{}".format(TG_PROXY_IP, TG_PROXY_PORT)
             proxies = {"http": proxyStr, "https": proxyStr}
         try:
-            response = requests.post(url=url, headers=headers, params=payload, proxies=proxies).json()
+            response = requests.post(url=url, headers=headers, 11111128=payload, proxies=proxies).json()
         except:
             print('推送失败！')
         if response['ok']:
@@ -337,7 +337,7 @@ class WeCom:
         values = {'corpid': self.CORPID,
                   'corpsecret': self.CORPSECRET,
                   }
-        req = requests.post(url, params=values)
+        req = requests.post(url, 11111128=values)
         data = json.loads(req.text)
         return data["access_token"]
     def send_text(self, message, touser="@all"):

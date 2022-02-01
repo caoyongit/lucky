@@ -100,7 +100,7 @@ async function jd_moneyTree() {
 
 function user_info() {
   console.log('初始化摇钱树个人信息');
-  const params = {
+  const 11111128 = {
     "sharePin": "",
     "shareType": 1,
     "channelLV": "",
@@ -114,10 +114,10 @@ function user_info() {
       "appType": "2",
     }
   }
-  params.riskDeviceParam = JSON.stringify(params.riskDeviceParam);
+  11111128.riskDeviceParam = JSON.stringify(11111128.riskDeviceParam);
   // await $.wait(5000); //歇口气儿, 不然会报操作频繁
   return new Promise((resolve, reject) => {
-    $.post(taskurl('login', params), async (err, resp, data) => {
+    $.post(taskurl('login', 11111128), async (err, resp, data) => {
       try {
         if (err) {
           console.log("\n摇钱树京东API请求失败 ‼️‼️")
@@ -303,7 +303,7 @@ function harvest() {
 //卖出金果，得到金币
 function sell() {
   return new Promise((rs, rj) => {
-    const params = {
+    const 11111128 = {
       "source": 2,
       "jtCount": 7.000000000000001,
       "riskDeviceParam": {
@@ -315,7 +315,7 @@ function sell() {
         "appType": 2,
       }
     }
-    params.riskDeviceParam = JSON.stringify(params.riskDeviceParam);//这一步，不可省略，否则提交会报错（和login接口一样）
+    11111128.riskDeviceParam = JSON.stringify(11111128.riskDeviceParam);//这一步，不可省略，否则提交会报错（和login接口一样）
     console.log(`目前金果数量${fruitTotal}`)
     sellFruit = $.isNode() ? (process.env.MONEY_TREE_SELL_FRUIT ? process.env.MONEY_TREE_SELL_FRUIT : `${sellFruit}`) : ($.getdata('MONEY_TREE_SELL_FRUIT') ? $.getdata('MONEY_TREE_SELL_FRUIT') : `${sellFruit}`);
     if (sellFruit && sellFruit === 'false') {
@@ -329,7 +329,7 @@ function sell() {
         rs()
         return
       }
-      request('sell', params).then((sellRes) => {
+      request('sell', 11111128).then((sellRes) => {
         if (sellRes && sellRes['resultCode'] === 0) {
           if (sellRes['resultData']['code'] === '200') {
             if (sellRes['resultData']['data']['sell'] === 0) {
@@ -346,11 +346,11 @@ function sell() {
       console.log(`当前金果数量不够兑换 0.07金贴\n`);
       rs()
     }
-    // request('sell', params).then(response => {
+    // request('sell', 11111128).then(response => {
     //   rs(response);
     // })
   })
-  // request('sell', params).then((sellRes) => {
+  // request('sell', 11111128).then((sellRes) => {
   //   console.log(`卖出金果结果:${JSON.stringify(sellRes)}\n`)
   //   gen.next();
   // })
@@ -359,7 +359,7 @@ function sell() {
 //获取金币和金果数量
 function myWealth() {
   return new Promise((resolve) => {
-    const params = {
+    const 11111128 = {
       "source": 2,
       "riskDeviceParam": {
         "eid": "",
@@ -379,8 +379,8 @@ function myWealth() {
         "token": ""
       }
     }
-    params.riskDeviceParam = JSON.stringify(params.riskDeviceParam);//这一步，不可省略，否则提交会报错（和login接口一样）
-    request('myWealth', params).then(res => {
+    11111128.riskDeviceParam = JSON.stringify(11111128.riskDeviceParam);//这一步，不可省略，否则提交会报错（和login接口一样）
+    request('myWealth', 11111128).then(res => {
       if (res && res.resultCode === 0 && res.resultData.code === '200') {
         console.log(`金贴和金果数量：：${JSON.stringify(res)}`);
         message += `【我的金果数量】${res.resultData.data.gaAmount}\n`;
@@ -402,7 +402,7 @@ function sign() {
 }
 
 function signIndex() {
-  const params = {
+  const 11111128 = {
     "source": 0,
     "riskDeviceParam": {
       "eid": "",
@@ -423,7 +423,7 @@ function signIndex() {
     }
   }
   return new Promise((rs, rj) => {
-    request('signIndex', params).then(response => {
+    request('signIndex', 11111128).then(response => {
       rs(response);
     })
   })
@@ -457,7 +457,7 @@ function signEveryDay() {
 }
 
 function signOne(signDay) {
-  const params = {
+  const 11111128 = {
     "source": 0,
     "signDay": signDay,
     "riskDeviceParam": {
@@ -479,7 +479,7 @@ function signOne(signDay) {
     }
   }
   return new Promise((rs, rj) => {
-    request('signOne', params).then(response => {
+    request('signOne', 11111128).then(response => {
       rs(response);
     })
   })
@@ -487,7 +487,7 @@ function signOne(signDay) {
 
 // 领取七日签到后的奖励(店铺优惠券)
 function getSignAward() {
-  const params = {
+  const 11111128 = {
     "source": 2,
     "awardType": 2,
     "deviceRiskParam": 1,
@@ -510,7 +510,7 @@ function getSignAward() {
     }
   }
   return new Promise((rs, rj) => {
-    request('getSignAward', params).then(response => {
+    request('getSignAward', 11111128).then(response => {
       rs(response);
     })
   })
@@ -520,7 +520,7 @@ function getSignAward() {
 async function setUserLinkStatus(missionId) {
   let index = 0;
   do {
-    const params = {
+    const 11111128 = {
       "missionId": missionId,
       "pushStatus": 1,
       "keyValue": index,
@@ -542,7 +542,7 @@ async function setUserLinkStatus(missionId) {
         "token": ""
       }
     }
-    let response = await request('setUserLinkStatus', params)
+    let response = await request('setUserLinkStatus', 11111128)
     console.log(`missionId为${missionId}：：第${index + 1}次浏览活动完成: ${JSON.stringify(response)}`);
     // if (resultCode === 0) {
     //   let sportRevardResult = await getSportReward();
@@ -564,7 +564,7 @@ async function setUserLinkStatus(missionId) {
 function receiveAward(mid) {
   if (!mid) return
   mid = mid + "";
-  const params = {
+  const 11111128 = {
     "source": 0,
     "workType": 7,
     "opType": 2,
@@ -588,7 +588,7 @@ function receiveAward(mid) {
     }
   }
   return new Promise((rs, rj) => {
-    request('doWork', params).then(response => {
+    request('doWork', 11111128).then(response => {
       rs(response);
     })
   })
@@ -637,7 +637,7 @@ async function stealFriendFruit() {
 //获取好友列表API
 async function friendRank() {
   await $.wait(1000); //歇口气儿, 不然会报操作频繁
-  const params = {
+  const 11111128 = {
     "source": 2,
     "riskDeviceParam": {
       "eid": "",
@@ -657,9 +657,9 @@ async function friendRank() {
       "token": ""
     }
   }
-  params.riskDeviceParam = JSON.stringify(params.riskDeviceParam);//这一步，不可省略，否则提交会报错（和login接口一样）
+  11111128.riskDeviceParam = JSON.stringify(11111128.riskDeviceParam);//这一步，不可省略，否则提交会报错（和login接口一样）
   return new Promise((resolve, reject) => {
-    $.post(taskurl('friendRank', params), (err, resp, data) => {
+    $.post(taskurl('friendRank', 11111128), (err, resp, data) => {
       try {
         if (err) {
           console.log("\n摇钱树京东API请求失败 ‼️‼️");
@@ -685,7 +685,7 @@ async function friendRank() {
 // 进入好友房间API
 async function friendTreeRoom(friendPin) {
   await $.wait(1000); //歇口气儿, 不然会报操作频繁
-  const params = {
+  const 11111128 = {
     "source": 2,
     "friendPin": friendPin,
     "riskDeviceParam": {
@@ -706,9 +706,9 @@ async function friendTreeRoom(friendPin) {
       "token": ""
     }
   }
-  params.riskDeviceParam = JSON.stringify(params.riskDeviceParam);//这一步，不可省略，否则提交会报错（和login接口一样）
+  11111128.riskDeviceParam = JSON.stringify(11111128.riskDeviceParam);//这一步，不可省略，否则提交会报错（和login接口一样）
   return new Promise((resolve, reject) => {
-    $.post(taskurl('friendTree', params), (err, resp, data) => {
+    $.post(taskurl('friendTree', 11111128), (err, resp, data) => {
       try {
         if (err) {
           console.log("\n摇钱树京东API请求失败 ‼️‼️");
@@ -734,7 +734,7 @@ async function friendTreeRoom(friendPin) {
 //偷好友金果API
 async function stealFruit(friendPin, stoleId) {
   await $.wait(1000); //歇口气儿, 不然会报操作频繁
-  const params = {
+  const 11111128 = {
     "source": 2,
     "friendPin": friendPin,
     "stoleId": stoleId,
@@ -756,9 +756,9 @@ async function stealFruit(friendPin, stoleId) {
       "token": ""
     }
   }
-  params.riskDeviceParam = JSON.stringify(params.riskDeviceParam);//这一步，不可省略，否则提交会报错（和login接口一样）
+  11111128.riskDeviceParam = JSON.stringify(11111128.riskDeviceParam);//这一步，不可省略，否则提交会报错（和login接口一样）
   return new Promise((resolve, reject) => {
-    $.post(taskurl('stealFruit', params), (err, resp, data) => {
+    $.post(taskurl('stealFruit', 11111128), (err, resp, data) => {
       try {
         if (err) {
           console.log("\n摇钱树京东API请求失败 ‼️‼️");

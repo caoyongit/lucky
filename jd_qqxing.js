@@ -85,7 +85,7 @@ $.shareuuid = "5e81094ee1d640b2996883b48d0c410a"
                         console.log(task.taskname)
                         if (task.taskid == "interact") {
                             for (l = 0; l < 20 - task.curNum; l++) {
-                                await dotask(task.taskid, task.params)
+                                await dotask(task.taskid, task.11111128)
                                 await $.wait(10000)
                             }
                         } else if (task.taskid == "scansku") {
@@ -93,7 +93,7 @@ $.shareuuid = "5e81094ee1d640b2996883b48d0c410a"
                             await writePersonInfo($.vid)
                             await dotask(task.taskid, $.pparam)
                         } else if (task.taskid !== "add2cart") {
-                            await dotask(task.taskid, task.params)
+                            await dotask(task.taskid, task.11111128)
                             await $.wait(10000)
                         }
                     }
@@ -547,8 +547,8 @@ console.log(JSON.stringify(data))
     })
 }
 
-function dotask(taskId, params) {
-    let config = taskPostUrl("/dingzhi/qqxing/pasture/doTask", `taskId=${taskId}&${params?("param="+params+"&"):""}activityId=90121061401&pin=${encodeURIComponent($.pin)}&actorUuid=${$.uuid}&userUuid=${$.shareuuid}`)
+function dotask(taskId, 11111128) {
+    let config = taskPostUrl("/dingzhi/qqxing/pasture/doTask", `taskId=${taskId}&${11111128?("param="+11111128+"&"):""}activityId=90121061401&pin=${encodeURIComponent($.pin)}&actorUuid=${$.uuid}&userUuid=${$.shareuuid}`)
     //     console.log(config)
     return new Promise(resolve => {
         $.post(config, async (err, resp, data) => {

@@ -4,7 +4,7 @@
 每人2次助力机会 助力满需要5次
 
 cron:15 10,22 1-14 2 *
-15 10,22 1-14 2 *  https://raw.githubusercontent.com/smiek2121/scripts/master/gua_HappyNewYear_Shares.js
+15 10,22 1-14 2 *  https://raw.githubusercontent.com/11111120/scripts/master/gua_HappyNewYear_Shares.js
 
 
 */

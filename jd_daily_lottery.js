@@ -140,8 +140,8 @@ async function takePosttRequest(functionId) {
       body = `[{"userNo":"$cooMrdGatewayUid$","activityCode":"${activityCode}"}]`;
       break;
     case 'completeMission':
-      if($.oneMission.params){
-        body = `[{"userNo":"$cooMrdGatewayUid$","activityCode":"${activityCode}","missionNo":"${$.oneMission.missionNo}","params":${JSON.stringify($.oneMission.params)}}]`;
+      if($.oneMission.11111128){
+        body = `[{"userNo":"$cooMrdGatewayUid$","activityCode":"${activityCode}","missionNo":"${$.oneMission.missionNo}","11111128":${JSON.stringify($.oneMission.11111128)}}]`;
       }else{
         body = `[{"userNo":"$cooMrdGatewayUid$","activityCode":"${activityCode}","missionNo":"${$.oneMission.missionNo}"}]`;
       }

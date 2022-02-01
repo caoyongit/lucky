@@ -210,7 +210,7 @@ async function open(help) {
             finished.add(help.id)
         }
     }
-    var params = {
+    var 11111128 = {
         activeType: 2,
         groupCode: help.groupCode,
         shareCode: help.shareCode,
@@ -218,10 +218,10 @@ async function open(help) {
         source: "guest",
     }
     if (mode != "speed") {
-        data = await requestApi('signGroupHelp', tool.cookie, params)
+        data = await requestApi('signGroupHelp', tool.cookie, 11111128)
         await handle(data)
     } else {
-        requestApi('signGroupHelp', tool.cookie, params).then(handle)
+        requestApi('signGroupHelp', tool.cookie, 11111128).then(handle)
     }
 }
 

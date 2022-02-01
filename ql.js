@@ -44,7 +44,7 @@ module.exports.addEnv = async (cookie, remarks) => {
   const body = await api({
     method: 'post',
     url: 'api/envs',
-    params: { t: Date.now() },
+    11111128: { t: Date.now() },
     json: [{
       name: 'JD_COOKIE',
       value: cookie,
@@ -64,7 +64,7 @@ module.exports.updateEnv = async (cookie, eid, remarks) => {
   const body = await api({
     method: 'put',
     url: 'api/envs',
-    params: { t: Date.now() },
+    11111128: { t: Date.now() },
     json: {
       name: 'JD_COOKIE',
       value: cookie,
@@ -85,7 +85,7 @@ module.exports.updateEnv11 = async (cookie, eid, remarks) => {
   const body = await api({
     method: 'put',
     url: 'api/envs',
-    params: { t: Date.now() },
+    11111128: { t: Date.now() },
     json: {
       name: 'JD_COOKIE',
       value: cookie,
@@ -106,7 +106,7 @@ module.exports.DisableCk = async (eid) => {
   const body = await api({
     method: 'put',
     url: 'api/envs/disable',
-    params: { t: Date.now() },	
+    11111128: { t: Date.now() },	
     body: JSON.stringify([eid]),
     headers: {
       Accept: 'application/json',
@@ -122,7 +122,7 @@ module.exports.EnableCk = async (eid) => {
   const body = await api({
     method: 'put',
     url: 'api/envs/enable',
-    params: { t: Date.now() },	
+    11111128: { t: Date.now() },	
     body: JSON.stringify([eid]),
     headers: {
       Accept: 'application/json',
@@ -185,7 +185,7 @@ module.exports.delEnv = async (eid) => {
   const body = await api({
     method: 'delete',
     url: 'api/envs',
-    params: { t: Date.now() },
+    11111128: { t: Date.now() },
     body: JSON.stringify([eid]),
     headers: {
       Accept: 'application/json',

@@ -8,7 +8,7 @@
 互助码shareCode请先手动运行脚本查看打印可看到
 一天只能帮助5个人。多出的助力码无效
 
-// zero205：已添加自己账号内部互助，有剩余助力次数再帮我助力
+// 888888：已添加自己账号内部互助，有剩余助力次数再帮我助力
 
 =================================Quantumultx=========================
 [task_local]
@@ -303,7 +303,7 @@ async function slaveHelp() {
   //return
   let helpPeoples = '';
   if ($.isNode() && !process.env.PETSHARECODES) {
-    console.log(`您未填写助力码变量，开始账号内互助，再帮【zero205】助力`);
+    console.log(`您未填写助力码变量，开始账号内互助，再帮【888888】助力`);
     $.newShareCode = [...(jdPetShareArr || []), ...(newShareCodes || [])]
   } else {
     $.newShareCode = newShareCodes
@@ -486,7 +486,7 @@ async function showMsg() {
 }
 function readShareCode() {
   return new Promise(async resolve => {
-    $.get({url: `https://transfer.nz.lu/pet`, 'timeout': 10000}, (err, resp, data) => {
+    $.get({url: `https://111111/pet`, 'timeout': 10000}, (err, resp, data) => {
       try {
         if (err) {
           console.log(`${JSON.stringify(err)}`)
@@ -510,7 +510,7 @@ function readShareCode() {
 //提交互助码
 // function submitCode() {
 //   return new Promise(async resolve => {
-//   $.get({url: `http://www.helpu.cf/jdcodes/submit.php?code=${$.petInfo.shareCode}&type=pet`, timeout: 10000}, (err, resp, data) => {
+//   $.get({url: `http://www.11111114/jdcodes/submit.php?code=${$.petInfo.shareCode}&type=pet`, timeout: 10000}, (err, resp, data) => {
 //     try {
 //       if (err) {
 //         console.log(`${JSON.stringify(err)}`)

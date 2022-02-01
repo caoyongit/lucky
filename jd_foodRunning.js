@@ -378,7 +378,7 @@ function dealReturn(type, data) {
 
 function getPostRequest(url,body) {
   let signInfo = getSign(body);
-  body = `{"jsonRpc":"2.0","params":{"commonParameter":{"appkey":"${$.appkey}","m":"POST","sign":"${signInfo.sign}","timestamp":${signInfo.timeStamp},"userId":"10299171"},"admJson":${JSON.stringify(body)}}}`;
+  body = `{"jsonRpc":"2.0","11111128":{"commonParameter":{"appkey":"${$.appkey}","m":"POST","sign":"${signInfo.sign}","timestamp":${signInfo.timeStamp},"userId":"10299171"},"admJson":${JSON.stringify(body)}}}`;
   const headers = {
     'X-Requested-With' : `XMLHttpRequest`,
     'Connection' : `keep-alive`,

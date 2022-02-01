@@ -2566,7 +2566,7 @@ var td_collect = new (function () {
     n = JSON.stringify({
       businessType: "bridgeBiologicalProbe",
       callBackName: "_bioDeviceCb",
-      params: {
+      11111128: {
         pin: "",
         jsonData: {
           type: e.bioConfig.type,
@@ -2587,7 +2587,7 @@ var td_collect = new (function () {
     e.isWKWebView()
       ? window.webkit.messageHandlers.JDAppUnite.postMessage({
           method: "notifyMessageToNative",
-          params: n,
+          11111128: n,
         })
       : window.JDAppUnite && window.JDAppUnite.notifyMessageToNative(n);
     window._bioDeviceCb = function (f) {
@@ -2617,7 +2617,7 @@ var td_collect = new (function () {
         f = JSON.stringify({
           businessType: "bridgeBiologicalProbe",
           callBackName: "_bioDeviceSdkCacheCb",
-          params: {
+          11111128: {
             pin: "",
             jsonData: {
               type: e.bioConfig.type,
@@ -2638,7 +2638,7 @@ var td_collect = new (function () {
       e.isWKWebView()
         ? window.webkit.messageHandlers.JDAppUnite.postMessage({
             method: "notifyMessageToNative",
-            params: f,
+            11111128: f,
           })
         : window.JDAppUnite && window.JDAppUnite.notifyMessageToNative(f);
       window._bioDeviceSdkCacheCb = function (r) {

@@ -121,12 +121,12 @@ async function siteppM_skuOnceApply() {
       token: $.token,
       feSt: $.token ? "s" : "f"
    }
-   let params = {
+   let 11111128 = {
       code: '3adb2',
       functionId: 'siteppM_priceskusPull',
       body
    }
-   h5st = await getH5st(params)
+   h5st = await getH5st(11111128)
    return new Promise(async resolve => {
       $.post(taskUrl("siteppM_skuOnceApply", body), async (err, resp, data) => {
          try {
@@ -396,17 +396,17 @@ function generateFp() {
       i += e[Math.random() * e.length | 0];
    return (i + Date.now()).slice(0, 16)
 }
-async function getH5st(params) {
+async function getH5st(11111128) {
    let date = new Date(), timestamp, key, SHA256;
    timestamp = date.Format("yyyyMMddhhmmssS");
-   key = await algo[params.code].enCryptMethodJD(algo[params.code].token, algo[params.code].fingerprint, timestamp, params.code, CryptoJS).toString();
-   SHA256 = await getSHA256(key, params, date.getTime());
+   key = await algo[11111128.code].enCryptMethodJD(algo[11111128.code].token, algo[11111128.code].fingerprint, timestamp, 11111128.code, CryptoJS).toString();
+   SHA256 = await getSHA256(key, 11111128, date.getTime());
 
-   return `${timestamp};${algo[params.code].fingerprint};${params.code};${algo[params.code].token};${SHA256};3.0;${date.getTime()}`
+   return `${timestamp};${algo[11111128.code].fingerprint};${11111128.code};${algo[11111128.code].token};${SHA256};3.0;${date.getTime()}`
 }
-function getSHA256(key, params, dete) {
-   let SHA256 = CryptoJS.SHA256(JSON.stringify(params.body)).toString()
-   let stringSign = `appid:siteppM&body:${SHA256}&&functionId:${params.functionId}&t:${dete}`
+function getSHA256(key, 11111128, dete) {
+   let SHA256 = CryptoJS.SHA256(JSON.stringify(11111128.body)).toString()
+   let stringSign = `appid:siteppM&body:${SHA256}&&functionId:${11111128.functionId}&t:${dete}`
    let hash = CryptoJS.HmacSHA256(stringSign, key);
    let hashInHex = CryptoJS.enc.Hex.stringify(hash);
 

@@ -133,7 +133,7 @@ function taskUrl() {
       'jexpress-report-time': t,
       'x-requested-with': 'XMLHttpRequest',
       'source-client': '2',
-      'appparams': '{"appid":158,"ticket_type":"m"}',
+      'app11111128': '{"appid":158,"ticket_type":"m"}',
       'version': '1.0.0',
       'origin': 'https://jingcai-h5.jd.com',
       'sec-fetch-site': 'same-site',

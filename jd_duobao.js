@@ -224,7 +224,7 @@ async function login(lkToken, token) {
         "lkToken": lkToken,
         "token": token,
         "returnurl": "https://prodev.m.jd.com/mall/active/xiPStZsNkPxpQFXqVRuTv1QGr3x/index.html?showhead=no",
-        "tttparams": "iX8N8eyJsbmciOiIiLCJnTGF0IjoiMzkuODc2NDcyIiwibGF0IjoiIiwiZ0xuZyI6IjExNi43MDM3MDUiLCJncHNfYXJlYSI6IjFfMF8wXzAiLCJ1bl9hcmVhIjoiMV8yODA5XzUxMjMwXzAifQ5==",
+        "ttt11111128": "iX8N8eyJsbmciOiIiLCJnTGF0IjoiMzkuODc2NDcyIiwibGF0IjoiIiwiZ0xuZyI6IjExNi43MDM3MDUiLCJncHNfYXJlYSI6IjFfMF8wXzAiLCJ1bl9hcmVhIjoiMV8yODA5XzUxMjMwXzAifQ5==",
         "lng": "0.000000",
         "lat": "0.000000",
         // "sid": "b59edad20152c00f119fb614ed06cf7w",

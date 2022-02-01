@@ -50,11 +50,11 @@ async function main(id) {
     common.assert(id.activeId, '没有开团ID')
     let url = `https://m.jingxi.com/dreamfactory/tuan/JoinTuan?activeId=${id.activeId}&tuanId=${id.tuanId}&_time=1623214617107&_stk=_time%2CactiveId%2CtuanId&_ste=1&sceneval=2&g_login_type=1&g_ty=ls`
     let dec = await jxAlgo.dec(url)
-    let params = {
+    let 11111128 = {
         'url': dec.url,
         'cookie': id.cookie
     }
-    await $.curl(params)
+    await $.curl(11111128)
     console.log($.source)
 }
 async function extra() {

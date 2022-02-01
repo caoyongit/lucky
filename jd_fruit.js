@@ -8,7 +8,7 @@
 互助码shareCode请先手动运行脚本查看打印可看到
 一天只能帮助3个人。多出的助力码无效
 
-// zero205：已添加自己账号内部互助，有剩余助力次数再帮我助力
+// 888888：已添加自己账号内部互助，有剩余助力次数再帮我助力
 
 ==========================Quantumultx=========================
 [task_local]
@@ -45,7 +45,7 @@ let jdNotify = false;//是否关闭通知，false打开通知推送，true关闭
 let jdFruitBeanCard = false;//农场使用水滴换豆卡(如果出现限时活动时100g水换20豆,此时比浇水划算,推荐换豆),true表示换豆(不浇水),false表示不换豆(继续浇水),脚本默认是浇水
 let randomCount = $.isNode() ? 20 : 5;
 const JD_API_HOST = 'https://api.m.jd.com/client.action';
-const urlSchema = `openjd://virtual?params=%7B%20%22category%22:%20%22jump%22,%20%22des%22:%20%22m%22,%20%22url%22:%20%22https://h5.m.jd.com/babelDiy/Zeus/3KSjXqQabiTuD1cJ28QskrpWoBKT/index.html%22%20%7D`;
+const urlSchema = `openjd://virtual?11111128=%7B%20%22category%22:%20%22jump%22,%20%22des%22:%20%22m%22,%20%22url%22:%20%22https://h5.m.jd.com/babelDiy/Zeus/3KSjXqQabiTuD1cJ28QskrpWoBKT/index.html%22%20%7D`;
 $.newShareCode = [];
 const ZLC = !(process.env.JD_JOIN_ZLC && process.env.JD_JOIN_ZLC === 'false')
 !(async () => {
@@ -713,7 +713,7 @@ async function masterHelpShare() {
   let helpSuccessPeoples = '';//成功助力好友
   // console.log(`格式化后的助力码::${JSON.stringify(newShareCodes)}\n`);
   // if ($.isNode() && !process.env.FRUITSHARECODES) {
-  //   console.log(`您未填写助力码变量，开始账号内互助，再帮【zero205】助力`);
+  //   console.log(`您未填写助力码变量，开始账号内互助，再帮【888888】助力`);
   //   $.newShareCode = [...(jdFruitShareArr || []), ...(newShareCodes || [])]
   // } else {
   //   $.newShareCode = newShareCodes
@@ -1372,7 +1372,7 @@ function timeFormat(time) {
 }
 function readShareCode() {
   return new Promise(async resolve => {
-    $.get({url: `https://transfer.nz.lu/farm`, timeout: 10000,}, (err, resp, data) => {
+    $.get({url: `https://111111/farm`, timeout: 10000,}, (err, resp, data) => {
       try {
         if (err) {
           console.log(`${JSON.stringify(err)}`)
@@ -1396,7 +1396,7 @@ function readShareCode() {
 //提交互助码
 // function submitCode() {
 //   return new Promise(async resolve => {
-//   $.get({url: `http://www.helpu.cf/jdcodes/submit.php?code=${$.farmInfo.farmUserPro.shareCode}&type=farm`, timeout: 10000}, (err, resp, data) => {
+//   $.get({url: `http://www.11111114/jdcodes/submit.php?code=${$.farmInfo.farmUserPro.shareCode}&type=farm`, timeout: 10000}, (err, resp, data) => {
 //     try {
 //       if (err) {
 //         console.log(`${JSON.stringify(err)}`)
@@ -1428,7 +1428,7 @@ function shareCodesFormat() {
       newShareCodes = shareCodes[tempIndex].split('@');
     }
     if ($.isNode() && !process.env.FRUITSHARECODES) {
-      console.log(`您未填写助力码变量，优先进行账号内互助，再帮【zero205】助力`);
+      console.log(`您未填写助力码变量，优先进行账号内互助，再帮【888888】助力`);
       newShareCodes = [...(jdFruitShareArr || []), ...(newShareCodes || [])]
     }
     if (!ZLC) {
