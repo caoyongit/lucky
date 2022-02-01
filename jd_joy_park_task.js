@@ -41,9 +41,9 @@ $.invitePin = [
   "",
   "",
   "",
-  "GLdMkFrZHXG8-YUnhakmEA",
-  "hwQ_gsL-AJeC0gGTlU0Z8w",
-  "DsYL6f_31DFANxBPMc00MA"
+  "",
+  "",
+  ""
 ]
 const JD_API_HOST = `https://api.m.jd.com/client.action`;
 message = ""
