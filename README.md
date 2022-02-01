@@ -1,105 +1,311 @@
-## 禁止Star/Fork!!
-## 请勿使用Action运行脚本!
-## 有条（科学）件（上网）的可以 [点此加入组织](https://t.me/jd_zero_205)  
+# 说明
+ * 发现脚本重复的可以提pr到.gitignore文件，欢迎多提PR。
+ * 因为仓库本身是脚本自己同步，有的仓库名字不一样难免又很多重复的。
+ * 有互助码没删干净的可以提醒我一下，感谢！
+ * 个人研究学习自用，主要是为了自己方便
+ * 合集加的最后结尾大佬们脚本,删了互助码和互助池，gua佬没删，需要互助池的可以用他们合集，结尾已经放了链接
+ * 想用谁的合集都可以，结尾有其他大佬们的合集或者看Oreomeow大佬整理的那些
+### [TG群](https://t.me/jdd_fruit)
+### [TG频道](https://t.me/jddfruit)
+## 青龙拉取链接
+``` 
+ql repo https://github.com/gys619/jdd.git "jd_|jx_|jddj_|gua_|getJDCookie|wskey" "activity|backUp" "^jd[^_]|USER|utils|ZooFaker_Necklace|JDJRValidator_Pure|sign_graphics_validate|jddj_cookie|function|ql|magic"
+```
+```
+推荐定时 0 */4 * * *
+```
 
-## 本仓库部分脚本已加入JDHelloWorld大佬助力池，默认加入助力池互助
-## 由于限制TG群内成员提交助力码，请需要互助的 [加入组织](https://t.me/jd_zero_205)，获取使用[教程](https://t.me/jd_zero205_tz/53)
-## 不需要助力池请添加环境变量，变量名：`JD_JOIN_ZLC`，变量值：`false`  
+[兜兜风评价助手1.6测试版](https://github.com/gys619/gys/blob/main/doudoufeng/%E5%85%9C%E5%85%9C%E9%A3%8E%E7%9A%84%E4%B8%9C%E4%BA%AC%E8%AF%84%E4%BB%B7%E5%8A%A9%E6%89%8B(%E6%B5%8B%E8%AF%95%E7%89%88)%201.7.exe?raw=true)
 
-## 请勿直接fork！！云函数用户先按照下方教程建立私库！！！
-## 已经创建公开仓库的请点击仓库右上角`Setting`，拉到页面最下方，点击`Change visibility`，选择`Make private`，填入黑体仓库名称进行确认!
+[退会：JDMemberCloseAccount](https://github.com/yqchilde/JDMemberCloseAccount)
 
-### 方式一(如果有一定github基础，十分建议直接方式二)
-**建议阅读@hshx123大佬的[教程](https://杏铃.top/teach/jd.html)**
-### 方式二
-* 有能力用户可以进行尝试,通过任何方法都可以,在空仓库内(保证分支名称为`main`),按需运行一次 https://github.com/Ca11back/doge-template 的action即可
-* 第二种:直接clone一个`scf2`分支(名字需要为`main`,clone哪个取决于你要用的部署方式)
+拉不到库是因为版本号没了，需要删了重新拉一下，运行一下下面命令就好了，库不稳，见谅！
 
-## 使用教程
+docker exec -it 容器名 bash
 
-### 【青龙】拉取仓库命令：
-可以直链github/国外机:`ql repo https://github.com/zero205/JD_tencent_scf.git "jd_|jx_|getJDCookie"  "backUp|icon" "^jd[^_]|USER|sendNotify|sign_graphics_validate|JDJR|JDSign" "main"`
+cd repo
 
-国内镜像(部分人不可用):
+rm -rf gys619_jdd
 
-`ql repo https://github.com.cnpmjs.org/zero205/JD_tencent_scf.git "jd_|jx_|getJDCookie"  "backUp|icon" "^jd[^_]|USER|sendNotify|sign_graphics_validate|JDJR|JDSign" "main"`
+##### jd_lzdz1_xxxxx.js开卡脚本取消了，有需要用青蛙的开卡
 
-(直连/镜像均不可用时,请参照下面使用直连命令并设置代理)
+### 脚本说明
+<details>
+<summary>查看</summary>
 
-设置代理/国内加速:
+加了一件安装依赖脚本
 
-老版青龙(临时解决),需要设置config.sh(如果还有extra.sh的话,也改)中的GithubProxyUrl改为
-https://pd.zwc365.com/ 或 https://pd.zwc365.com/cfworker/
+* 想跑gua开卡的可以加,false改成true
+    ```
+    export guaopencard_All="false"
+    export guaopencard_addSku_All="false"
+    export guaopencardRun_All="false"
+    export guaopencard_draw="false"
+    ```
+* 去掉多余的双十一红包脚本，自己再config里加export FLCODE=''，否则不能跑
+* 内部互助可以把code.sh和task_before.sh放config目录下，并添加一个code的定时任务，命令:task /ql/config/code.sh
+* 加KingRan大佬仓库
+* 最新面板2.9.7或者新版拉不到可以进入容器
+    ```
+    docker exec -it 容器名 bash
+    cd repo
+    rm -rf gys619_jdd
+    ```
 
-新版青龙可以改ProxyUrl为自己的科学上网代理,来走自己的代理
+* 加了[Oreomeow大佬](https://raw.githubusercontent.com/Oreomeow/VIP/main/Conf/Qinglong/config.sample.sh)的config模板,名字是jd_config.sample.sh
+* 财富岛新手任务开木板
+  * 修改青龙配置文件,如下,加个ts
+  ```
+   #ql repo命令拉取脚本时需要拉取的文件后缀，直接写文件后缀名即可
+   RepoFileExtensions="js py ts"
+   ```
 
-或者直接将上面两个代理地址追加到url之前来临时解决
-`ql repo https://pd.zwc365.com/https://github.com/zero205/JD_tencent_scf.git "jd_|jx_|getJDCookie"  "backUp|icon" "^jd[^_]|USER|sendNotify|sign_graphics_validate|JDJR|JDSign" "main"`
+ 
+ 
+</details>
 
-[高级用户,可以自己创建自己的cf woker做git代理(注意将cnpmjs设为0)](https://github.com/hunshcn/gh-proxy#cf-worker%E7%89%88%E6%9C%AC%E9%83%A8%E7%BD%B2)
+### 安装青龙需要一些的依赖
+<details>
+<summary>查看依赖列表</summary>
 
-[或者尝试修改host来尝试直连](https://www.cnblogs.com/jiannanchun/p/15397235.html)
 
-### 腾讯云函数部署建议阅读@hshx123大佬的[教程](https://杏铃.top/teach/jd.html)【推荐】.[旧教程](./backUp/tencentscf.md)【备用】
+* 最新青龙支持安装依赖需要啥依赖，去依赖管理添加即可，简单方便
+* 遇到Cannot find module 'xxxxxx'报错就进入青龙容器
+* docker exec -it QL(自己容器名) bash
+* pnpm install xxxxx(报错中引号里的复制过来)
 
-### [elecV2P](https://github.com/elecV2/elecV2P) 部署【随缘维护，建议转战➟[Docker](https://www.runoob.com/docker/windows-docker-install.html) [青龙](https://github.com/whyour/qinglong)】
-    * 安装教程：[点此查看](https://github.com/elecV2/elecV2P-dei/blob/master/docs/01-overview.md)  
-    * 订阅任务：`https://ghproxy.com/https://raw.githubusercontent.com/zero205/JD_tencent_scf/main/jd_task.json`
-    * elecV2P京东CK、通知填写格式等相关补充说明：[点此查看](./backUp/elecV2P.md)  
+ 
 
-### 获取京东cookie教程可参考：
+ 安装青龙的一些依赖，按需求安装
+* docker exec -it qinglong(自己容器名) bash -c "npm install -g typescript"
+
+* docker exec -it qinglong bash -c "npm install axios date-fns"
+
+* docker exec -it qinglong bash -c "npm install crypto -g"
+
+* docker exec -it qinglong bash -c "npm install png-js"
+
+* docker exec -it qinglong bash -c "npm install -g npm"
+
+* docker exec -it qinglong bash -c "pnpm i png-js"
+
+* docker exec -it qinglong bash -c "pip3 install requests"
+
+* docker exec -it qinglong bash -c "apk add --no-cache build-base g++ cairo-dev pango-dev giflib-dev && cd scripts && npm install canvas --build-from-source"
+
+* docker exec -it qinglong bash -c "apk add python3 zlib-dev gcc jpeg-dev python3-dev musl-dev freetype-dev"
+
+* docker exec -it qinglong bash -c "cd /ql/scripts/ && apk add --no-cache build-base g++ cairo-dev pango-dev giflib-dev && npm i && npm i -S ts-node typescript @types/node date-fns axios png-js canvas --build-from-source"
+
+或者
+
+* npm install -g png-js
+* npm install -g date-fns
+* npm install -g axios
+* npm install -g crypto-js
+* npm install -g ts-md5
+* npm install -g tslib
+* npm install -g @types/node
+* npm install -g requests
+
+</details>
+
+
+
+### 青龙拉取常用京东脚本库([Oreomeow大佬](https://github.com/Oreomeow/VIP/blob/main/Tasks/qlrepo/Readme.md)整理的一些仓库)
+<details>
+<summary>京东脚本库</summary>
+ 
+
+#### 说明
+ - 更新一个整库脚本
+ ```
+ ql repo <repourl> <path> <blacklist> <dependence> <branch>
+ ```
+ - 更新单个脚本文件
+ ```
+ ql raw <fileurl>
+ ```
+ 下面是示例
+
+#### 整库
+- `Unknown 备份托管等`
   
-  + [浏览器获取京东cookie教程](./backUp/GetJdCookie.md)
-    
-  + [插件获取京东cookie教程](./backUp/GetJdCookie2.md)
-   
-  + [浏览器扩展程序获取京东cookie教程](./backUp/GetJdCookie3.md)
+  1. `JDHelloWorld`
+  ```
+  ql repo https://github.com/JDHelloWorld/jd_scripts.git "jd_|jx_|getJDCookie" "activity|backUp|Coupon|enen|update|test" "^jd[^_]|USER|^TS|utils|notify|env|package|ken.js"
+  ```
+  2. `he1pu`（自动提交助力码-京喜工厂、种豆得豆、东东工厂、东东农场、健康社区、京喜财富岛、东东萌宠、闪购盲盒，随机从数据库中选取助力码互助）
+  ```
+  ql repo https://github.com/he1pu/JDHelp.git "jd_|jx_|getJDCookie" "Coupon|update" "^jd[^_]|USER|^sign|^ZooFaker|utils"
+  ```
+  3. `shufflewzc`
+  ```
+  ql repo https://github.com/shufflewzc/faker2.git "jd_|jx_|gua_|jddj_|getJDCookie" "activity|backUp" "^jd[^_]|USER|utils|^JS|^TS|^JDJRValidator_Pure|^ZooFaker|^sign"
+  ```
+  4. `Aaron-lv`
+  ```
+  ql repo https://github.com/Aaron-lv/sync.git "jd_|jx_|getJDCookie" "activity|backUp|Coupon" "^jd[^_]|USER|utils" "jd_scripts"
+  ```
+  5. `panghu999`（无维护）
+  ```
+  ql repo https://github.com/panghu999/jd_scripts.git "jd_|jx_|getJDCookie" "activity|backUp|Coupon|jd_try|format_" "^jd[^_]|USER"
+  ```
+  6. `chinnkarahoi`（无维护）
+  ```
+  ql repo https://github.com/chinnkarahoi/jd_scripts.git "jd_|jx_|getJDCookie" "activity|backUp|Coupon" "^jd[^_]|USER"
+  ```
 
-## 特别声明: 
+- `passerby-b`
+```
+ql repo https://github.com/passerby-b/JDDJ.git "jddj_" "scf_test_event|jddj_fruit_code.js|jddj_getck.js|jd_|jddj_cookie"
+```
+- `curtinlv`
+```
+ql repo https://github.com/curtinlv/JD-Script.git "jd_"
+```
+- `smiek2221`
+```
+ql repo https://github.com/smiek2221/scripts.git "jd_|gua_" "" "^MovementFaker|^JDJRValidator|^ZooFaker|^sign" 
+```
+- `cdle`
+```
+ql repo https://github.com/cdle/xdd.git "jd_" "disposable|expired|jdc"
+```
+- `ZCY01`
+```
+ql repo https://github.com/ZCY01/daily_scripts.git "jd_"
+```
+- `whyour/hundun`
+```
+ql repo https://github.com/whyour/hundun.git "quanx" "tokens|caiyun|didi|donate|fold|Env"
+```
+- `moposmall`
+```
+ql repo https://github.com/moposmall/Script.git "Me"
+```
+- `Ariszy (Zhiyi-N)`
+```
+ql repo https://github.com/Ariszy/Private-Script.git "JD"
+```
+- `photonmang`（宠汪汪及兑换、点点券修复）
+```
+ql repo https://github.com/photonmang/quantumultX.git "JDscripts"
+```
+- `jiulan`
+```
+ql repo https://github.com/jiulan/platypus.git "jd_|jx_" "" "overdue" "main"
+```
+- `star261`
+```
+ql repo https://github.com/star261/jd.git "jd_|star" "" "code" "main"
+```
+- `Wenmoux`
+```
+ql repo https://github.com/Wenmoux/scripts.git "other|jd" "" "" "wen"
+```
+- `Tsukasa007`
+```
+ql repo https://github.com/Tsukasa007/my_script.git "jd_|jx_" "jdCookie|USER_AGENTS|sendNotify|backup" "" "master"
+```
 
-* 本仓库发布的Script项目中涉及的任何解锁和解密分析脚本，仅用于测试和学习研究，禁止用于商业用途，不能保证其合法性，准确性，完整性和有效性，请根据情况自行判断.
+#### 单脚本
+#### 名称之后标注`﹢`的单脚本，若上面已拉取仓库的可以不拉，否则会重复拉取。这里适用于只拉取部分脚本使用
+> `curtinlv`﹢
 
-* 本项目内所有资源文件，禁止任何公众号、自媒体进行任何形式的转载、发布。
+>> 入会
+```
+ql raw https://raw.githubusercontent.com/curtinlv/JD-Script/main/OpenCard/jd_OpenCard.py
+```
+>> 关注
+```
+ql raw https://raw.githubusercontent.com/curtinlv/JD-Script/main/getFollowGifts/jd_getFollowGift.py
+```
 
-* lxk0301对任何脚本问题概不负责，包括但不限于由任何脚本错误导致的任何损失或损害.
+> `chiupam`
 
-* 间接使用脚本的任何用户，包括但不限于建立VPS或在某些行为违反国家/地区法律或相关法规的情况下进行传播, lxk0301 对于由此引起的任何隐私泄漏或其他后果概不负责.
+>> 京喜工厂瓜分电力开团 ID 
+```
+ql raw https://raw.githubusercontent.com/chiupam/JD_Diy/master/pys/activeId.py
+```
 
-* 请勿将Script项目的任何内容用于商业或非法目的，否则后果自负.
+> `Aaron-lv`+
 
-* 如果任何单位或个人认为该项目的脚本可能涉嫌侵犯其权利，则应及时通知并提供身份证明，所有权证明，我们将在收到认证文件后删除相关脚本.
+>> 财富岛
+```
+ql raw https://raw.githubusercontent.com/Aaron-lv/sync/jd_scripts/jd_cfd.js
+```
+or
+```
+ql repo https://github.com/Aaron-lv/sync.git "jd_cfd" "" "" "jd_scripts"
+```
 
-* 任何以任何方式查看此项目的人或直接或间接使用该Script项目的任何脚本的使用者都应仔细阅读此声明。lxk0301 保留随时更改或补充此免责声明的权利。一旦使用并复制了任何相关脚本或Script项目的规则，则视为您已接受此免责声明.
+> `Wenmoux`+
 
- **您必须在下载后的24小时内从计算机或手机中完全删除以上内容.**  </br>
-> ***您使用或者复制了本仓库且本人制作的任何脚本，则视为`已接受`此声明，请仔细阅读***   
+>> 口袋书店
+```
+ql raw https://raw.githubusercontent.com/Wenmoux/scripts/wen/jd/chinnkarahoi_jd_bookshop.js
+```
+or
+```
+ql repo https://github.com/Wenmoux/scripts.git "chinnkarahoi_jd_bookshop" "" "" "wen"
+```
 
-## 环境变量
-- [环境变量集合](./githubAction.md)
+> `NobyDa`
 
-## 特别感谢(排名不分先后)：
+>> 京东多合一签到脚本
 
+```
+ql raw https://raw.githubusercontent.com/NobyDa/Script/master/JD-DailyBonus/JD_DailyBonus.js
+```
+or
+```
+ql repo https://github.com/NobyDa/Script.git "JD-DailyBonus" "" "JD_DailyBonus" "master"
+```
 
-* [@NobyDa](https://github.com/NobyDa)
+#### 已删库存档
+- `monk-coder`
+```
+ql repo https://github.com/monk-dust/dust.git "i-chenzhe|normal|member|car" "backup"
+```
+- `hyzaw`
+```
+ql repo https://github.com/hyzaw/scripts.git "ddo_"
+```
+- `zooPanda`
+```
+ql repo https://github.com/zooPanda/zoo.git "zoo"
+```
+- `longzhuzhu`
+```
+ql repo https://github.com/longzhuzhu/nianyu.git "qx"
+```
+- `panghu999/panghu`
+```
+ql repo https://github.com/panghu999/panghu.git "jd_"
+```
+</details>
+ 
+ 
 
-* [@chavyleung](https://github.com/chavyleung)
+ 
+ 
+ 
 
-* [@liuxiaoyucc](https://github.com/liuxiaoyucc)
-
-* [@Zero-S1](https://github.com/Zero-S1)
-
-* [@uniqueque](https://github.com/uniqueque)
-
-* [@nzw9314](https://github.com/nzw9314)
-
-* [@JDHelloWorld](https://github.com/JDHelloWorld)
-
-* [@smiek2221](https://github.com/smiek2221)
-
-* [@star261](https://github.com/star261)
-
-* [@Wenmoux](https://github.com/Wenmoux)
-
-* [@Tsukasa007](https://github.com/Tsukasa007)
-
-* [@Aaron](https://github.com/Aaron)
+### 致谢
+* [@kangwenhang](https://github.com/kangwenhang)
+* [@smiek2221](https://github.com/smiek2221/scripts.git)
+* [@yuannian1112](https://github.com/yuannian1112/jd_scripts.git)
+*  [@shufflewzc](https://github.com.cnpmjs.org/Hyominn/hyominnn.git)
+*  [@passerby-b](https://github.com/passerby-b/JDDJ.git)
+*  [@he1pu](https://github.com/he1pu/JDHelp.git)
+*  [@airacg](https://github.com/airacg/jd_task.git)
+*  [@ccwav](https://github.com/ccwav/QLScript2.git)
+*  [@Zy143L](https://github.com/Zy143L/wskey.git)
+*  [@X1a0He](https://github.com/X1a0He/jd_scripts_fixed)
+*  [@AlterGu](https://github.com/AlterGu/qinglong_note)
+*  [@KingRan](https://github.com/KingRan/JDJB)
+*  [@Aaron-lv](https://github.com/Aaron-lv/sync)
+*  [@zzfiu](https://github.com/zzfiu/jd.git)
+*  [@zero205](https://github.com/zero205/JD_tencent_scf)
+*  [@wuye999](https://github.com/wuye999/myScripts)
