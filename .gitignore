@@ -129,7 +129,8 @@ jd_vivo.js
 jd_code.js
 jd_enc.js
 jd_help.js
-jd_speed_redpocke.js
+#极速版红包
+#jd_speed_redpocke.js
 jd_jxred.js
 jd_qjd_help.js
 gua_RedEnvelope.js
@@ -257,10 +258,13 @@ jd_tiger.js
 #天天领压岁钱
 jd_ttysq.js
 #击鼓助力
-jd_HappyNewYear_Share.js
+jd_HappyNewYear_Shares.js
 jd_drum.js
-gua_HappyNewYear_Share.js
-
+jd_HappyNewYear_Share.js
+#invokekey获取
+jd_work_invokeKey.js
+#锦鲤
+jd_redPacket.js
 
 
 ########过期活动##############
@@ -274,7 +278,8 @@ jd_hwmh.js
 jd_mt.js
 #京东金融天天试手气
 jd_btdraw.py
-
+#农场集勋章
+jd_medal.js
 
 
 ############不能跑的################
@@ -304,7 +309,7 @@ jd_shopsign.js
 #星店长
 jd_xdz.py
 fanli.js
-
+jd_reward.ts
 
 
 
