@@ -125,10 +125,10 @@ async function helpFriends() {
 }
 
 function getsharePin() {
-  const 11111128 = { "sharePin": "", "shareType": 1, "channelLV": "", "source": 2, "riskDeviceParam": { "eid": "", "fp": "", "sdkToken": "", "token": "", "jstub": "", "appType": "2", } }
-  11111128.riskDeviceParam = JSON.stringify(11111128.riskDeviceParam);
+  const params = { "sharePin": "", "shareType": 1, "channelLV": "", "source": 2, "riskDeviceParam": { "eid": "", "fp": "", "sdkToken": "", "token": "", "jstub": "", "appType": "2", } }
+  params.riskDeviceParam = JSON.stringify(params.riskDeviceParam);
   return new Promise((resolve, reject) => {
-    $.post(taskurl('login', 11111128), async (err, resp, data) => {
+    $.post(taskurl('login', params), async (err, resp, data) => {
       try {
         if (err) {
           console.log("\n摇钱树京东API请求失败 ‼️‼️")
@@ -164,10 +164,10 @@ function getsharePin() {
 }
 
 function help(sharePin) {
-  const 11111128 = { "sharePin": sharePin, "shareType": 1, "channelLV": "", "source": 2, "riskDeviceParam": { "eid": "", "fp": "", "sdkToken": "", "token": "", "jstub": "", "appType": "2", } }
-  11111128.riskDeviceParam = JSON.stringify(11111128.riskDeviceParam);
+  const params = { "sharePin": sharePin, "shareType": 1, "channelLV": "", "source": 2, "riskDeviceParam": { "eid": "", "fp": "", "sdkToken": "", "token": "", "jstub": "", "appType": "2", } }
+  params.riskDeviceParam = JSON.stringify(params.riskDeviceParam);
   return new Promise((resolve, reject) => {
-    $.post(taskurl('login', 11111128), async (err, resp, data) => {
+    $.post(taskurl('login', params), async (err, resp, data) => {
       try {
         if (err) {
           console.log("\n摇钱树京东API请求失败 ‼️‼️")

@@ -738,7 +738,7 @@ function JDUserSignPre1(s, key, title, acData, ask) {
         Cookie: KEY
       },
       opts: {
-        'filter': 'try{var od=JSON.parse(body);var 11111128=(od.floatLayerList||[]).filter(o=>o.11111128&&o.11111128.match(/enActK/)).map(o=>o.11111128).pop()||(od.floorList||[]).filter(o=>o.template=="signIn"&&o.signInfos&&o.signInfos.11111128&&o.signInfos.11111128.match(/enActK/)).map(o=>o.signInfos&&o.signInfos.11111128).pop();var tId=(od.floorList||[]).filter(o=>o.boardParams&&o.boardParams.turnTableId).map(o=>o.boardParams.turnTableId).pop();var page=od.paginationFlrs;return JSON.stringify({qxAct:11111128||null,qxTid:tId||null,qxPage:page||null})}catch(e){return `=> 过滤器发生错误: ${e.message}`}'
+        'filter': 'try{var od=JSON.parse(body);var params=(od.floatLayerList||[]).filter(o=>o.params&&o.params.match(/enActK/)).map(o=>o.params).pop()||(od.floorList||[]).filter(o=>o.template=="signIn"&&o.signInfos&&o.signInfos.params&&o.signInfos.params.match(/enActK/)).map(o=>o.signInfos&&o.signInfos.params).pop();var tId=(od.floorList||[]).filter(o=>o.boardParams&&o.boardParams.turnTableId).map(o=>o.boardParams.turnTableId).pop();var page=od.paginationFlrs;return JSON.stringify({qxAct:params||null,qxTid:tId||null,qxPage:page||null})}catch(e){return `=> 过滤器发生错误: ${e.message}`}'
       },
       body: `body=${encodeURIComponent(`{"activityId":"${acData}"${ask?`,"paginationParam":"2","paginationFlrs":"${ask}"`:``}}`)}`
     };
@@ -751,10 +751,10 @@ function JDUserSignPre1(s, key, title, acData, ask) {
           const turnTableId = od.qxTid || (od.floorList || []).filter(o => o.boardParams && o.boardParams.turnTableId).map(o => o.boardParams.turnTableId).pop();
           const page = od.qxPage || od.paginationFlrs;
           if (data.match(/enActK/)) { // 含有签到活动数据
-            let 11111128 = od.qxAct || (od.floatLayerList || []).filter(o => o.11111128 && o.11111128.match(/enActK/)).map(o => o.11111128).pop()
-            if (!11111128) { // 第一处找到签到所需数据
+            let params = od.qxAct || (od.floatLayerList || []).filter(o => o.params && o.params.match(/enActK/)).map(o => o.params).pop()
+            if (!params) { // 第一处找到签到所需数据
               // floatLayerList未找到签到所需数据，从floorList中查找
-              let signInfo = (od.floorList || []).filter(o => o.template == 'signIn' && o.signInfos && o.signInfos.11111128 && o.signInfos.11111128.match(/enActK/))
+              let signInfo = (od.floorList || []).filter(o => o.template == 'signIn' && o.signInfos && o.signInfos.params && o.signInfos.params.match(/enActK/))
                 .map(o => o.signInfos).pop();
               if (signInfo) {
                 if (signInfo.signStat == '1') {
@@ -762,16 +762,16 @@ function JDUserSignPre1(s, key, title, acData, ask) {
                   merge[key].notify = `${title}: 失败, 原因: 已签过 ⚠️`
                   merge[key].fail = 1
                 } else {
-                  11111128 = signInfo.11111128;
+                  params = signInfo.params;
                 }
               } else {
                 merge[key].notify = `${title}: 失败, 活动查找异常 ⚠️`
                 merge[key].fail = 1
               }
             }
-            if (11111128) {
+            if (params) {
               return resolve({
-                11111128: 11111128
+                params: params
               }); // 执行签到处理
             }
           } else if (turnTableId) { // 无签到数据, 但含有关注店铺签到
@@ -826,7 +826,7 @@ function JDUserSignPre2(s, key, title, acData) {
         if (error) {
           throw new Error(error)
         } else {
-          const act = data.match(/\"11111128\":\"\{\\\"enActK.+?\\\"\}\"/)
+          const act = data.match(/\"params\":\"\{\\\"enActK.+?\\\"\}\"/)
           const turnTable = data.match(/\"turnTableId\":\"(\d+)\"/)
           const page = data.match(/\"paginationFlrs\":\"(\[\[.+?\]\])\"/)
           if (act) { // 含有签到活动数据
@@ -1091,7 +1091,7 @@ function JingDongCash(s) {
         headers: {
           Cookie: KEY
         },
-        body: "body=%7B%22pageClickKey%22%3A%22CouponCenter%22%2C%22eid%22%3A%22O5X6JYMZTXIEX4VBCBWEM5PTIZV6HXH7M3AI75EABM5GBZYVQKRGQJ5A2PPO5PSELSRMI72SYF4KTCB4NIU6AZQ3O6C3J7ZVEP3RVDFEBKVN2RER2GTQ%22%2C%22shshshfpb%22%3A%22v1%5C%2FzMYRjEWKgYe%2BUiNwEvaVlrHBQGVwqLx4CsS9PH1s0s0Vs9AWk%2B7vr9KSHh3BQd5NTukznDTZnd75xHzonHnw%3D%3D%22%2C%22childActivityUrl%22%3A%22openapp.jdmobile%253a%252f%252fvirtual%253f11111128%253d%257b%255c%2522category%255c%2522%253a%255c%2522jump%255c%2522%252c%255c%2522des%255c%2522%253a%255c%2522couponCenter%255c%2522%257d%22%2C%22monitorSource%22%3A%22cc_sign_ios_index_config%22%7D&client=apple&clientVersion=8.5.0&d_brand=apple&d_model=iPhone8%2C2&openudid=1fce88cd05c42fe2b054e846f11bdf33f016d676&scope=11&screen=1242%2A2208&sign=1cce8f76d53fc6093b45a466e93044da&st=1581084035269&sv=102"
+        body: "body=%7B%22pageClickKey%22%3A%22CouponCenter%22%2C%22eid%22%3A%22O5X6JYMZTXIEX4VBCBWEM5PTIZV6HXH7M3AI75EABM5GBZYVQKRGQJ5A2PPO5PSELSRMI72SYF4KTCB4NIU6AZQ3O6C3J7ZVEP3RVDFEBKVN2RER2GTQ%22%2C%22shshshfpb%22%3A%22v1%5C%2FzMYRjEWKgYe%2BUiNwEvaVlrHBQGVwqLx4CsS9PH1s0s0Vs9AWk%2B7vr9KSHh3BQd5NTukznDTZnd75xHzonHnw%3D%3D%22%2C%22childActivityUrl%22%3A%22openapp.jdmobile%253a%252f%252fvirtual%253fparams%253d%257b%255c%2522category%255c%2522%253a%255c%2522jump%255c%2522%252c%255c%2522des%255c%2522%253a%255c%2522couponCenter%255c%2522%257d%22%2C%22monitorSource%22%3A%22cc_sign_ios_index_config%22%7D&client=apple&clientVersion=8.5.0&d_brand=apple&d_model=iPhone8%2C2&openudid=1fce88cd05c42fe2b054e846f11bdf33f016d676&scope=11&screen=1242%2A2208&sign=1cce8f76d53fc6093b45a466e93044da&st=1581084035269&sv=102"
       };
       $nobyda.post(JDCAUrl, function(error, response, data) {
         try {

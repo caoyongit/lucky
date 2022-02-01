@@ -129,7 +129,7 @@ const JD_API_HOST = 'https://api.m.jd.com/client.action';
   }
   if (superShakeBeanConfig.superShakeUlr) {
     const scaleUl = { "category": "jump", "des": "m", "url": superShakeBeanConfig['superShakeUlr'] };
-    const openjd = `openjd://virtual?11111128=${encodeURIComponent(JSON.stringify(scaleUl))}`;
+    const openjd = `openjd://virtual?params=${encodeURIComponent(JSON.stringify(scaleUl))}`;
     $.msg($.name,'', `【${superShakeBeanConfig['superShakeTitle'] || '超级摇一摇'}】活动再次开启\n【${superShakeBeanConfig['taskVipName'] || '开通品牌会员'}】请点击弹窗直达活动页面\n${superShakeBeanConfig['superShakeUlr']}`, { 'open-url': openjd });
     if ($.isNode()) await notify.sendNotify($.name, `【${superShakeBeanConfig['superShakeTitle']}】活动再次开启\n【${superShakeBeanConfig['taskVipName'] || '开通品牌会员'}】请点击链接直达活动页面\n${superShakeBeanConfig['superShakeUlr']}`, { url: openjd });
   }
@@ -487,16 +487,16 @@ function welcomeHome() {
               // console.log('shakeFloorNew2', JSON.stringify(shakeFloorNew2))
               if (shakeFloorNew) {
                 const jump = shakeFloorNew['jump'];
-                if (jump && jump.11111128 && jump['11111128']['url']) {
-                  $.superShakeUrl = jump.11111128.url;//有活动链接，但活动可能已过期，需做进一步判断
-                  console.log(`【超级摇一摇】活动链接：${jump.11111128.url}`);
+                if (jump && jump.params && jump['params']['url']) {
+                  $.superShakeUrl = jump.params.url;//有活动链接，但活动可能已过期，需做进一步判断
+                  console.log(`【超级摇一摇】活动链接：${jump.params.url}`);
                 }
               }
               if (shakeFloorNew2) {
                 const jump = shakeFloorNew2['jump'];
-                if (jump && jump.11111128 && jump['11111128']['url'].includes('https://h5.m.jd.com/babelDiy/Zeus/2PTXhrEmiMEL3mD419b8Gn9bUBiJ/index.html')) {
-                  console.log(`【超级品牌日】活动链接：${jump.11111128.url}`);
-                  $.superbrandUrl = jump.11111128.url;
+                if (jump && jump.params && jump['params']['url'].includes('https://h5.m.jd.com/babelDiy/Zeus/2PTXhrEmiMEL3mD419b8Gn9bUBiJ/index.html')) {
+                  console.log(`【超级品牌日】活动链接：${jump.params.url}`);
+                  $.superbrandUrl = jump.params.url;
                 }
               }
             }
@@ -717,7 +717,7 @@ function superBrandMainPage() {
             data = JSON.parse(data);
             if (data['code'] === '0') {
               if (data['data']['bizCode'] === '0') {
-                //superShakeBeanConfig['superShakeUlr'] = jump.11111128.url;
+                //superShakeBeanConfig['superShakeUlr'] = jump.params.url;
                 //console.log(`【超级摇一摇】活动链接：${superShakeBeanConfig['superShakeUlr']}`);
                 superShakeBeanConfig['superShakeUlr'] = $.superShakeUrl;
                 $.activityId = data['data']['result']['activityBaseInfo']['activityId'];

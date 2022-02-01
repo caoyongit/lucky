@@ -84,11 +84,11 @@ let inviter = {};
     }
 })()
 
-function requestApi(functionId, 11111128) {
-    if (!11111128) {
-        11111128 = {}
+function requestApi(functionId, params) {
+    if (!params) {
+        params = {}
     }
-    11111128.linkId = "LsQNxL7iWDlXUs6cFl-AAg"
+    params.linkId = "LsQNxL7iWDlXUs6cFl-AAg"
 
     return new Promise(resolve => {
         $.post({
@@ -103,7 +103,7 @@ function requestApi(functionId, 11111128) {
                 'referer': 'https://joypark.jd.com/?activityId=LsQNxL7iWDlXUs6cFl-AAg&lng=110.309497&lat=25.244346&sid=0341d5b9d804d0b838ae6018c19088dw&un_area=20_1726_22885_51456',
                 'cookie': cookie
             },
-            body: `functionId=${functionId}&body=${JSON.stringify(11111128)}&_t=${Date.now()}&appid=activities_platform`,
+            body: `functionId=${functionId}&body=${JSON.stringify(params)}&_t=${Date.now()}&appid=activities_platform`,
         }, (err, resp, data) => {
             try {
                 data = JSON.parse(data)

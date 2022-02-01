@@ -462,7 +462,7 @@ def start():
                     'g_login_type': '0',
                     'g_ty': 'ls'
                 }
-                se_req = requests.get(se_url, headers=he, 11111128=se_data)
+                se_req = requests.get(se_url, headers=he, params=se_data)
                 if se_req.json()['errMsg'] == 'success':
                     # printf("\t服务评价成功！！")
                     Cent[ce]['服务评价'] += 1

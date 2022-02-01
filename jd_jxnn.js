@@ -226,8 +226,8 @@ async function drawUserTask() {
 async function UserSignNew() {
     let fn = "sign/UserSignNew";
     let stk = "sceneval,source";
-    let 11111128 = { source: '' };
-    let res = await api(fn, stk, 11111128);
+    let params = { source: '' };
+    let res = await api(fn, stk, params);
     if (res) {
         if (res.retCode == 60009) {
             console.log('风控用户，不让玩')
@@ -244,8 +244,8 @@ async function UserSignNew() {
 }
 
 
-function decrypturl(url, stk, 11111128, appId = 10012) {
-    for (const [key, val] of Object.entries(11111128)) {
+function decrypturl(url, stk, params, appId = 10012) {
+    for (const [key, val] of Object.entries(params)) {
         url += `&${key}=${val}`
     }
     url += '&h5st=' + decrypt(url, stk, appId)
@@ -295,9 +295,9 @@ function getJxmcUrlData(url, name) {
     }
 }
 
-async function api(fn, stk, 11111128) {
+async function api(fn, stk, params) {
     let url = `https://m.jingxi.com/pgcenter`;
-    url = await decrypturl(`${url}/${fn}?sceneval=2&_stk=active,activedesc,sceneval&_ste=1&_=${Date.now()}&sceneval=2`, stk, 11111128, 10012)
+    url = await decrypturl(`${url}/${fn}?sceneval=2&_stk=active,activedesc,sceneval&_ste=1&_=${Date.now()}&sceneval=2`, stk, params, 10012)
     let myRequest = taskUrl(url);
     return new Promise(async resolve => {
         let rv = "";

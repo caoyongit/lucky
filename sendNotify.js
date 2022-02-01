@@ -6,7 +6,7 @@
  * sendNotify 推送通知功能
  * @param text 通知头
  * @param desp 通知体
- * @param 11111128 某些推送通知方式点击弹窗可跳转, 例：{ url: 'https://abc.com' }
+ * @param params 某些推送通知方式点击弹窗可跳转, 例：{ url: 'https://abc.com' }
  * @param author 作者仓库等信息  例：`本通知 By：https://github.com/whyour/qinglong`
  */
 
@@ -191,14 +191,14 @@ if (process.env.PUSH_PLUS_USER) {
  * sendNotify 推送通知功能
  * @param text 通知头
  * @param desp 通知体
- * @param 11111128 某些推送通知方式点击弹窗可跳转, 例：{ url: 'https://abc.com' }
+ * @param params 某些推送通知方式点击弹窗可跳转, 例：{ url: 'https://abc.com' }
  * @param author 作者仓库等信息  例：`本通知 By：https://github.com/whyour/qinglong`
  * @returns {Promise<unknown>}
  */
 async function sendNotify(
   text,
   desp,
-  11111128 = {'TG交流群':'https://t.me/jd_zero_205'},
+  params = {'TG交流群':'https://t.me/jd_zero_205'},
   author = '\n\n云函数老用户这个月开始实行新收费政策,请自行去自己私库页面或查看群内置顶.不需要请及时删除函数和github私库.',
 ) {
   let no_notify = process.env.no_notify
@@ -226,12 +226,12 @@ async function sendNotify(
   //由于上述两种微信通知需点击进去才能查看到详情，故text(标题内容)携带了账号序号以及昵称信息，方便不点击也可知道是哪个京东哪个活动
   text = text.match(/.*?(?=\s?-)/g) ? text.match(/.*?(?=\s?-)/g)[0] : text;
   await Promise.all([
-    BarkNotify(text, desp, 11111128), //iOS Bark APP
+    BarkNotify(text, desp, params), //iOS Bark APP
     tgBotNotify(text, desp), //telegram 机器人
     ddBotNotify(text, desp), //钉钉机器人
     qywxBotNotify(text, desp), //企业微信机器人
     qywxamNotify(text, desp), //企业微信应用消息推送
-    iGotNotify(text, desp, 11111128), //iGot
+    iGotNotify(text, desp, params), //iGot
     gobotNotify(text, desp),//go-cqhttp
     gotifyNotify(text, desp),//gotify
   ]);
@@ -439,13 +439,13 @@ function CoolPush(text, desp) {
   });
 }
 
-function BarkNotify(text, desp, 11111128 = {}) {
+function BarkNotify(text, desp, params = {}) {
   return new Promise(resolve => {
     if (BARK_PUSH) {
       const index = BARK_PUSH.lastIndexOf('/') + 1
       const url = BARK_PUSH.substr(0,index)+"push"
       const device_key = BARK_PUSH.substr(index)
-      11111128['Group'] = `${BARK_GROUP}`;
+      params['Group'] = `${BARK_GROUP}`;
       const options = {
         url,
         json:{
@@ -454,7 +454,7 @@ function BarkNotify(text, desp, 11111128 = {}) {
         body:desp,
         sound:BARK_SOUND,
         group:BARK_GROUP,
-        ext_11111128:11111128
+        ext_params:params
         },
          headers: {
           'Content-Type': 'application/json; charset=utf-8'
@@ -782,7 +782,7 @@ function qywxamNotify(text, desp) {
   });
 }
 
-function iGotNotify(text, desp, 11111128 = {}) {
+function iGotNotify(text, desp, params = {}) {
   return new Promise((resolve) => {
     if (IGOT_PUSH_KEY) {
       // 校验传入的IGOT_PUSH_KEY是否有效
@@ -794,7 +794,7 @@ function iGotNotify(text, desp, 11111128 = {}) {
       }
       const options = {
         url: `https://push.hellyw.com/${IGOT_PUSH_KEY.toLowerCase()}`,
-        body: `title=${text}&content=${desp}&${querystring.stringify(11111128)}`,
+        body: `title=${text}&content=${desp}&${querystring.stringify(params)}`,
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded',
         },

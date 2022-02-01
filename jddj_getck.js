@@ -15,8 +15,8 @@ const $ = new API("jddj_getck");
         let ckstr = $request.headers.Cookie;
         if (ckstr.indexOf('deviceid_pdj_jd') > -1 && ckstr.indexOf('o2o_m_h5_sid') > -1) {
             let ck = '';
-            var 11111128 = ckstr.split(';');
-            11111128.forEach(item => {
+            var params = ckstr.split(';');
+            params.forEach(item => {
                 if (item.indexOf('=') > -1) {
                     if (item.indexOf('deviceid_pdj_jd') > -1 || item.indexOf('o2o_m_h5_sid') > -1) {
                         ck += item + ';';
