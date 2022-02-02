@@ -6,7 +6,7 @@
 活动入口：京东APP-游戏与互动-查看更多-京喜工厂
 或者: 京东APP首页搜索 "玩一玩" ,造物工厂即可
 
-// 888888：已添加自己账号内部互助，有剩余助力次数再帮我助力
+// zero205：已添加自己账号内部互助，有剩余助力次数再帮我助力
 
 已支持IOS双京东账号,Node.js支持N个京东账号
 脚本兼容: QuantumultX, Surge, Loon, JSBox, Node.js
@@ -45,10 +45,10 @@ let tuanActiveId = ``, hasSend = false;
 const jxOpenUrl = `openjd://virtual?params=%7B%20%22category%22:%20%22jump%22,%20%22des%22:%20%22m%22,%20%22url%22:%20%22https://wqsd.jd.com/pingou/dream_factory/index.html%22%20%7D`;
 let cookiesArr = [], cookie = '', message = '', allMessage = '', jdDreamFactoryShareArr = [], newShareCodes;
 const inviteCodes = [
-  '',
-  "",
-  '',
-  ''
+  'V5LkjP4WRyjeCKR9VRwcRX0bBuTz7MEK0-E99EJ7u0k=@0WtCMPNq7jekehT6d3AbFw==@6lw84c1ARwpoRyOtfnF77g==@J1t777njetfQcyEg57lzQA==@W9u_eBl3YKbSjXu0QP3HGQ=@VV55A_oKz5u5CYrL3jxPdg==@9TCPf6sW9_v3B9f3KUoa7Q==',
+  "gB99tYLjvPcEFloDgamoBw==@7dluIKQMp0bySgcr8AqFgw==@6lw84c1ARwpoRyOtfnF77g==@J1t777njetfQcyEg57lzQA==@W9u_eBl3YKbSjXu0QP3HGQ=@VV55A_oKz5u5CYrL3jxPdg==@9TCPf6sW9_v3B9f3KUoa7Q==",
+  '-OvElMzqeyeGBWazWYjI1Q==@6lw84c1ARwpoRyOtfnF77g==@J1t777njetfQcyEg57lzQA==@W9u_eBl3YKbSjXu0QP3HGQ=@VV55A_oKz5u5CYrL3jxPdg==@9TCPf6sW9_v3B9f3KUoa7Q==',
+  'GFwo6PntxDHH95ZRzZ5uAg==@6lw84c1ARwpoRyOtfnF77g==@J1t777njetfQcyEg57lzQA==@W9u_eBl3YKbSjXu0QP3HGQ=@VV55A_oKz5u5CYrL3jxPdg==@9TCPf6sW9_v3B9f3KUoa7Q=='
 ];
 const jdCookieNode = $.isNode() ? require('./jdCookie.js') : '';
 const ZLC = !(process.env.JD_JOIN_ZLC && process.env.JD_JOIN_ZLC === 'false')
@@ -465,7 +465,7 @@ async function helpFriends() {
   if ($.canHelpFlag) {
     await shareCodesFormat();
     if ($.isNode() && !process.env.DREAM_FACTORY_SHARE_CODES) {
-      console.log(`您未填写助力码变量，开始账号内互助，再帮【888888】助力`);
+      console.log(`您未填写助力码变量，开始账号内互助，再帮【zero205】助力`);
       $.newShareCode = [...(jdDreamFactoryShareArr || []), ...(newShareCodes || [])]
     } else {
       $.newShareCode = newShareCodes
@@ -1050,14 +1050,14 @@ async function tuanActivity() {
   }
 }
 async function joinLeaderTuan() {
-  let res = await updateTuanIdsCDN('https://raw.githubusercontent.com/888888/11111128/main/shareCodes/11111127')
-  if (!res) res = await updateTuanIdsCDN('https://raw.fastgit.org/888888/11111128/main/shareCodes/11111127')
+  let res = await updateTuanIdsCDN('https://raw.githubusercontent.com/zero205/updateTeam/main/shareCodes/jd_updateFactoryTuanId.json')
+  if (!res) res = await updateTuanIdsCDN('https://raw.fastgit.org/zero205/updateTeam/main/shareCodes/jd_updateFactoryTuanId.json')
   $.authorTuanIds = [...(res && res.tuanIds || [])]
   if ($.authorTuanIds && $.authorTuanIds.length) {
     for (let tuanId of $.authorTuanIds) {
       if (!tuanId) continue
       if (!$.canHelp) break;
-      console.log(`\n账号${$.UserName} 参加888888的团 【${tuanId}】`);
+      console.log(`\n账号${$.UserName} 参加zero205的团 【${tuanId}】`);
       await JoinTuan(tuanId);
       await $.wait(1000);
     }
@@ -1378,7 +1378,7 @@ async function showMsg() {
 function readShareCode() {
   console.log(`开始`)
   return new Promise(async resolve => {
-    $.get({url: `https://111111/jxfactory`, 'timeout': 10000}, (err, resp, data) => {
+    $.get({url: `https://transfer.nz.lu/jxfactory`, 'timeout': 10000}, (err, resp, data) => {
       try {
         if (err) {
           console.log(`${JSON.stringify(err)}`)

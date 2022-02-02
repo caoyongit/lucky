@@ -1,5 +1,5 @@
 /*
-种豆得豆 脚本更新地址：https://raw.githubusercontent.com/222222/sync/jd_scripts/jd_plantBean.js
+种豆得豆 脚本更新地址：https://raw.githubusercontent.com/Aaron-lv/sync/jd_scripts/jd_plantBean.js
 更新时间：2021-08-20
 活动入口：京东APP我的-更多工具-种豆得豆
 已支持IOS京东多账号,云端多京东账号
@@ -8,21 +8,21 @@
 互助码shareCode请先手动运行脚本查看打印可看到
 每个京东账号每天只能帮助3个人。多出的助力码将会助力失败。
 
-// 888888：已添加自己账号内部互助，有剩余助力次数再帮我助力
+// zero205：已添加自己账号内部互助，有剩余助力次数再帮我助力
 
 =====================================Quantumult X=================================
 [task_local]
-1 7-21/2 * * * https://raw.githubusercontent.com/222222/sync/jd_scripts/jd_plantBean.js, tag=种豆得豆, img-url=https://raw.githubusercontent.com/58xinian/icon/master/jdzd.png, enabled=true
+1 7-21/2 * * * https://raw.githubusercontent.com/Aaron-lv/sync/jd_scripts/jd_plantBean.js, tag=种豆得豆, img-url=https://raw.githubusercontent.com/58xinian/icon/master/jdzd.png, enabled=true
 
 =====================================Loon================================
 [Script]
-cron "1 7-21/2 * * *" script-path=https://raw.githubusercontent.com/222222/sync/jd_scripts/jd_plantBean.js,tag=京东种豆得豆
+cron "1 7-21/2 * * *" script-path=https://raw.githubusercontent.com/Aaron-lv/sync/jd_scripts/jd_plantBean.js,tag=京东种豆得豆
 
 ======================================Surge==========================
-京东种豆得豆 = type=cron,cronexp="1 7-21/2 * * *",wake-system=1,timeout=3600,script-path=https://raw.githubusercontent.com/222222/sync/jd_scripts/jd_plantBean.js
+京东种豆得豆 = type=cron,cronexp="1 7-21/2 * * *",wake-system=1,timeout=3600,script-path=https://raw.githubusercontent.com/Aaron-lv/sync/jd_scripts/jd_plantBean.js
 
 ====================================小火箭=============================
-京东种豆得豆 = type=cron,script-path=https://raw.githubusercontent.com/222222/sync/jd_scripts/jd_plantBean.js, cronexpr="1 7-21/2 * * *", timeout=3600, enable=true
+京东种豆得豆 = type=cron,script-path=https://raw.githubusercontent.com/Aaron-lv/sync/jd_scripts/jd_plantBean.js, cronexpr="1 7-21/2 * * *", timeout=3600, enable=true
 
 */
 const $ = new Env('京东种豆得豆');
@@ -37,9 +37,9 @@ const JD_API_HOST = 'https://api.m.jd.com/client.action';
 //下面给出两个账号的填写示例（iOS只支持2个京东账号）
 let shareCodes = [ // IOS本地脚本用户这个列表填入你要助力的好友的shareCode
   //账号一的好友shareCode,不同好友的shareCode中间用@符号隔开
-  '',
+  'mlrdw3aw26j3xc6xycqtc74umufg2kphl3yfaxy@4npkonnsy7xi3ii7u6y52byc4urucexhl2wh2pq@olmijoxgmjutydymkyc56wollvia4yorekjt5ky@q7knrx5fitalyburqkflsm4jjq3h7wlwy7o5jii@4npkonnsy7xi2dkkbvl643342m5of4rpapky3ha@u72q4vdn3zes3byfckc62jqcbkxq3wtymnzrz2i@e7lhibzb3zek3ziaj5fstdr2qbxofrnt63pxzpq@fn5sjpg5zdejmpxw4mttxyyppqmy3t6eveppesy@hjkb2bbfm2bdr7lxto2hvcagyq3h7wlwy7o5jii',
   //账号二的好友shareCode,不同好友的shareCode中间用@符号隔开
-  '',
+  'mlrdw3aw26j3xc6xycqtc74umufg2kphl3yfaxy@4npkonnsy7xi3ii7u6y52byc4urucexhl2wh2pq@olmijoxgmjutydymkyc56wollvia4yorekjt5ky@q7knrx5fitalyburqkflsm4jjq3h7wlwy7o5jii@4npkonnsy7xi2dkkbvl643342m5of4rpapky3ha@u72q4vdn3zes3byfckc62jqcbkxq3wtymnzrz2i@e7lhibzb3zek3ziaj5fstdr2qbxofrnt63pxzpq@fn5sjpg5zdejmpxw4mttxyyppqmy3t6eveppesy@hjkb2bbfm2bdr7lxto2hvcagyq3h7wlwy7o5jii',
 ]
 const ZLC = !(process.env.JD_JOIN_ZLC && process.env.JD_JOIN_ZLC === 'false')
 let allMessage = ``;
@@ -417,7 +417,7 @@ function showTaskProcess() {
 //助力好友
 async function doHelp() {
   if ($.isNode() && !process.env.PLANT_BEAN_SHARECODES) {
-    console.log(`您未填写助力码变量，开始账号内互助，再帮【888888】助力`);
+    console.log(`您未填写助力码变量，开始账号内互助，再帮【zero205】助力`);
     $.newShareCode = [...(jdPlantBeanShareArr || []), ...(newShareCodes || [])]
   } else {
     $.newShareCode = newShareCodes
@@ -565,7 +565,7 @@ async function plantBeanIndex() {
 }
 function readShareCode() {
   return new Promise(async resolve => {
-    $.get({url: `https://111111/bean`, timeout: 10000}, (err, resp, data) => {
+    $.get({url: `https://transfer.nz.lu/bean`, timeout: 10000}, (err, resp, data) => {
       try {
         if (err) {
           console.log(`${JSON.stringify(err)}`)

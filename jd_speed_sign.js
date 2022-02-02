@@ -93,7 +93,7 @@ async function jdGlobal() {
     await apTaskList()
     await wheelsHome()
     if ($.canhelp) {
-      console.log(`\n京东账号${$.index}开始助力【888888】邀请有礼，感谢！\n`);
+      console.log(`\n京东账号${$.index}开始助力【zero205】邀请有礼，感谢！\n`);
       await invite()
       await invite2()
     }
@@ -206,7 +206,7 @@ async function cashout() {
               if (data.subCode === 0 && data.data.cashOutSuccess === true) {
                 console.log(`红包兑换成功，剩余${data.data.cashDrawAmount}元`)
                 if ($.isNode()) {
-                  await notify.sendNotify(`${$.name}`, `【京东账号${$.index}】 ${$.nickName}\n兑换红包成功，请尽快使用\n更多脚本->"https://github.com/888888/JD_tencent_scf"`);
+                  await notify.sendNotify(`${$.name}`, `【京东账号${$.index}】 ${$.nickName}\n兑换红包成功，请尽快使用\n更多脚本->"https://github.com/zero205/JD_tencent_scf"`);
                 }
               } else {
                 console.log(`红包兑换失败，${data.msg}`)
