@@ -13,7 +13,7 @@
 不会每次运行脚本都投入电力
 只有当心仪的商品存在，并且收集起来的电量满足当前商品所需电力，才投入
 
-// zero205：已添加自己账号内部互助，有剩余助力次数再帮我助力
+// 888888：已添加自己账号内部互助，有剩余助力次数再帮我助力
 
 已支持IOS双京东账号,Node.js支持N个京东账号
 脚本兼容: QuantumultX, Surge, Loon, JSBox, Node.js
@@ -52,7 +52,7 @@ if ($.isNode()) {
 }
 let wantProduct = ``;//心仪商品名称
 const JD_API_HOST = 'https://api.m.jd.com/client.action';
-const inviteCodes = ['T0225KkcRUxL9FKDJh7ylvMLcACjVWnYaS5kRrbA@T0225KkcRx0Q_AaCdRr1xf8DIQCjVWnYaS5kRrbA@T0225KkcRksZpgDSIBj3xvADdQCjVWnYaS5kRrbA@T018v_52Qxge81HeJB2b1ACjVWnYaS5kRrbA@T0205KkcPFd_vD2uSkCi3YhXCjVWnYaS5kRrbA@T018v_hzQhwZ8FbUIRib1ACjVWnYaS5kRrbA'];
+const inviteCodes = [''];
 let myInviteCode;
 $.newShareCode = [];
 const ZLC = !(process.env.JD_JOIN_ZLC && process.env.JD_JOIN_ZLC === 'false')
@@ -263,7 +263,7 @@ async function algorithm() {
 }
 async function helpFriends() {
   if ($.isNode() && !process.env.DDFACTORY_SHARECODES) {
-    console.log(`您未填写助力码变量，开始账号内互助，再帮【zero205】助力`);
+    console.log(`您未填写助力码变量，开始账号内互助，再帮【888888】助力`);
     $.newShareCode = [...(jdFactoryShareArr || []), ...(newShareCodes || [])]
   } else {
     $.newShareCode = newShareCodes
@@ -672,7 +672,7 @@ function jdfactory_getHomeData() {
 function readShareCode() {
   console.log(`开始`)
   return new Promise(async resolve => {
-    $.get({url: `https://transfer.nz.lu/ddfactory`, timeout: 10000}, (err, resp, data) => {
+    $.get({url: `https://111111/ddfactory`, timeout: 10000}, (err, resp, data) => {
       try {
         if (err) {
           console.log(`${JSON.stringify(err)}`)
@@ -696,7 +696,7 @@ function readShareCode() {
 //提交互助码
 // function submitCode() {
 //   return new Promise(async resolve => {
-//     $.get({ url: `http://www.helpu.cf/jdcodes/submit.php?code=${myInviteCode}&type=ddfactory`, timeout: 10000 }, (err, resp, data) => {
+//     $.get({ url: `http://www.11111114/jdcodes/submit.php?code=${myInviteCode}&type=ddfactory`, timeout: 10000 }, (err, resp, data) => {
 //       try {
 //         if (err) {
 //           console.log(`${JSON.stringify(err)}`)

@@ -8,7 +8,7 @@
 互助码shareCode请先手动运行脚本查看打印可看到
 一天只能帮助3个人。多出的助力码无效
 
-// zero205：已添加自己账号内部互助，有剩余助力次数再帮我助力
+// 888888：已添加自己账号内部互助，有剩余助力次数再帮我助力
 
 ==========================Quantumultx=========================
 [task_local]
@@ -33,11 +33,11 @@ let cookiesArr = [], cookie = '', jdFruitShareArr = [], isBox = false, notify, n
 //下面给出两个账号的填写示例（iOS只支持2个京东账号）
 let shareCodes = [ // 这个列表填入你要助力的好友的shareCode
   //账号一的好友shareCode,不同好友的shareCode中间用@符号隔开
-  '0a74407df5df4fa99672a037eec61f7e@dbb21614667246fabcfd9685b6f448f3@6fbd26cc27ac44d6a7fed34092453f77@61ff5c624949454aa88561f2cd721bf6@56db8e7bc5874668ba7d5195230d067a@b9d287c974cc498d94112f1b064cf934@23b49f5a106b4d61b2ea505d5a4e1056@8107cad4b82847a698ca7d7de9115f36@35fcfda6d3af48e7afe79f5e18a39e55@5a41b6db624346cdbe347b61279fda8f@3fa4d41fe66e47bd8a9549e33e3b9b54@5dc8a7b9f4544a8ca79f8cf62d0c7623@4918db5a466c4332843c75064a5a3880@b48561c90c8c45f5b355034629715a80@9b8419ddb29240468d06edfd61fa642e',
+  '',
   //账号二的好友shareCode,不同好友的shareCode中间用@符号隔开
-  'b1638a774d054a05a30a17d3b4d364b8@f92cb56c6a1349f5a35f0372aa041ea0@9c52670d52ad4e1a812f894563c746ea@8175509d82504e96828afc8b1bbb9cb3@2673c3777d4443829b2a635059953a28@d2d5d435675544679413cb9145577e0f@35fcfda6d3af48e7afe79f5e18a39e55@5a41b6db624346cdbe347b61279fda8f@3fa4d41fe66e47bd8a9549e33e3b9b54@5dc8a7b9f4544a8ca79f8cf62d0c7623@4918db5a466c4332843c75064a5a3880@b48561c90c8c45f5b355034629715a80@9b8419ddb29240468d06edfd61fa642e',
+  '',
   //账号三的好友shareCode,不同好友的shareCode中间用@符号隔开
-  '35fcfda6d3af48e7afe79f5e18a39e55@5a41b6db624346cdbe347b61279fda8f@3fa4d41fe66e47bd8a9549e33e3b9b54@5dc8a7b9f4544a8ca79f8cf62d0c7623@4918db5a466c4332843c75064a5a3880@b48561c90c8c45f5b355034629715a80',
+  '',
 ]
 let message = '', subTitle = '', option = {}, isFruitFinished = false;
 const retainWater = $.isNode() ? (process.env.retainWater ? process.env.retainWater : 100) : ($.getdata('retainWater') ? $.getdata('retainWater') : 100);//保留水滴大于多少g,默认100g;
@@ -713,7 +713,7 @@ async function masterHelpShare() {
   let helpSuccessPeoples = '';//成功助力好友
   // console.log(`格式化后的助力码::${JSON.stringify(newShareCodes)}\n`);
   // if ($.isNode() && !process.env.FRUITSHARECODES) {
-  //   console.log(`您未填写助力码变量，开始账号内互助，再帮【zero205】助力`);
+  //   console.log(`您未填写助力码变量，开始账号内互助，再帮【888888】助力`);
   //   $.newShareCode = [...(jdFruitShareArr || []), ...(newShareCodes || [])]
   // } else {
   //   $.newShareCode = newShareCodes
@@ -1372,7 +1372,7 @@ function timeFormat(time) {
 }
 function readShareCode() {
   return new Promise(async resolve => {
-    $.get({url: `https://transfer.nz.lu/farm`, timeout: 10000,}, (err, resp, data) => {
+    $.get({url: `https://111111/farm`, timeout: 10000,}, (err, resp, data) => {
       try {
         if (err) {
           console.log(`${JSON.stringify(err)}`)
@@ -1396,7 +1396,7 @@ function readShareCode() {
 //提交互助码
 // function submitCode() {
 //   return new Promise(async resolve => {
-//   $.get({url: `http://www.helpu.cf/jdcodes/submit.php?code=${$.farmInfo.farmUserPro.shareCode}&type=farm`, timeout: 10000}, (err, resp, data) => {
+//   $.get({url: `http://www.11111114/jdcodes/submit.php?code=${$.farmInfo.farmUserPro.shareCode}&type=farm`, timeout: 10000}, (err, resp, data) => {
 //     try {
 //       if (err) {
 //         console.log(`${JSON.stringify(err)}`)
@@ -1428,7 +1428,7 @@ function shareCodesFormat() {
       newShareCodes = shareCodes[tempIndex].split('@');
     }
     if ($.isNode() && !process.env.FRUITSHARECODES) {
-      console.log(`您未填写助力码变量，优先进行账号内互助，再帮【zero205】助力`);
+      console.log(`您未填写助力码变量，优先进行账号内互助，再帮【888888】助力`);
       newShareCodes = [...(jdFruitShareArr || []), ...(newShareCodes || [])]
     }
     if (!ZLC) {
