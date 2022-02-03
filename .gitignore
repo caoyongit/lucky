@@ -188,7 +188,7 @@ jx_task_*.js
 creat.sh
 jw_*.js
 jr_*.js
-*.conf
+#*.conf
 jd_help_sendBean.js
 jx_help_*.js
 #大赢家助力
@@ -266,7 +266,8 @@ jd_HappyNewYear_Share.js
 jd_work_invokeKey.js
 #锦鲤
 jd_redPacket.js
-
+# 早起福利
+jd_zqfl.py
 
 ########过期活动##############
 
@@ -281,7 +282,8 @@ jd_mt.js
 jd_btdraw.py
 #农场集勋章
 jd_medal.js
-
+# 全民抢京豆8.6-8.16
+jd_qjd.py
 
 ############不能跑的################
 # 通用游戏
@@ -311,7 +313,8 @@ jd_shopsign.js
 jd_xdz.py
 fanli.js
 jd_reward.ts
-
+# 整点红包雨 longzhuzhu
+jd_super_redrain.js
 
 
 
