@@ -46,12 +46,12 @@ if ($.isNode()) {
   }
   if (process.env.PIGPETSHARECODE) {
     shareId = process.env.PIGPETSHARECODE
-  } else{
+  } else {
     let res = await getAuthorShareCode('https://raw.githubusercontent.com/888888/11111128/main/shareCodes/11111127')
     if (!res) {
       res = await getAuthorShareCode('https://raw.fastgit.org/888888/11111128/main/shareCodes/11111127')
     }
-    if (res){
+    if (res) {
       shareId = res[Math.floor((Math.random() * res.length))];
     }
   }
