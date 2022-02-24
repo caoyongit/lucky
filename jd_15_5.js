@@ -1,6 +1,5 @@
 /*
 极速版抢卷
-
 ============Quantumultx===============
 [task_local]
 #极速版抢卷
@@ -13,14 +12,14 @@ cron "58 59 6,9,14,17,20 * * *" script-path=https://raw.githubusercontent.com/44
 ============小火箭=========
 极速版抢卷 = type=cron,script-path=https://raw.githubusercontent.com/444444/KR/main/jd_15_5.js, cronexpr="58 59 6,9,14,17,20 * * *", timeout=3600, enable=true
  */
-const $ = new Env('抢极速版全品卷15-5');
+const $ = new Env('抢极速全品卷15-5');
 const moment = require('moment');
 //进容器安装依赖： npm install -g moment
 const notify = $.isNode() ? require('./sendNotify') : '';
 //Node.js用户请在jdCookie.js处填写京东ck;
 const jdCookieNode = $.isNode() ? require('./jdCookie.js') : '';
 let jdNotify = true;//是否关闭通知，false打开通知推送，true关闭通知推送
-const randomCount = $.isNode() ? 30 : 5;
+const randomCount = $.isNode() ? 15 : 5;
 //IOS等用户直接用NobyDa的jd cookie
 let cookiesArr = [], cookie = '', message;
 if ($.isNode()) {

@@ -48,26 +48,12 @@ if ($.isNode()) {
     $.log(`\n甘露殿【https://t.me/jdredrain】提醒你:本地红包雨配置获取错误，尝试从远程读取配置\n`);
     await $.wait(1000);
     if (!jd_redrain_url) {
-      // $.log(`\n甘露殿【https://t.me/jdredrain】提醒你:今日龙王🐲出差，天气晴朗☀️，改日再来～\n`);
-      $.log(`尝试使用默认远程url`);
-      jd_redrain_url = 'https://raw.githubusercontent.com/Ca11back/scf-experiment/master/json/redrain.json'
-      let RedRainIds = await getRedRainIds(jd_redrain_url)
-      if (!RedRainIds) {
-        $.log(`尝试使用cdn`);
-        jd_redrain_url = 'https://raw.fastgit.org/Ca11back/scf-experiment/master/json/redrain.json'
-        RedRainIds = await getRedRainIds(jd_redrain_url)
-      }
-      if (RedRainIds) {
-        jd_redrain_activityId = RedRainIds.join('@')
-      }else{
-        $.log(`默认远程url获取失败`);
-        return
-      }
-    } else{
-      let RedRainIds = await getRedRainIds(jd_redrain_url);
-      for (let i = 0; i < 1; i++) {
-        jd_redrain_activityId = RedRainIds[0];
-      }
+      $.log(`\n甘露殿【https://t.me/jdredrain】提醒你:今日龙王🐲出差，天气晴朗☀️，改日再来～\n`);
+      return;
+    }    
+    let RedRainIds = await getRedRainIds(jd_redrain_url);
+    for (let i = 0; i < 1; i++) {
+      jd_redrain_activityId = RedRainIds[0];
     }
   }
   if (!jd_redrain_activityId) {
@@ -215,18 +201,18 @@ function getRedRainIds(url) {
         "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Mobile/15E148 Safari/604.1 Edg/87.0.4280.88"
       }
     };
-    // if ($.isNode() && process.env.TG_PROXY_HOST && process.env.TG_PROXY_PORT) {
-    //   const tunnel = require("tunnel");
-    //   const agent = {
-    //     https: tunnel.httpsOverHttp({
-    //       proxy: {
-    //         host: process.env.TG_PROXY_HOST,
-    //         port: process.env.TG_PROXY_PORT * 1
-    //       }
-    //     })
-    //   }
-    //   Object.assign(options, { agent })
-    // }
+    if ($.isNode() && process.env.TG_PROXY_HOST && process.env.TG_PROXY_PORT) {
+      const tunnel = require("tunnel");
+      const agent = {
+        https: tunnel.httpsOverHttp({
+          proxy: {
+            host: process.env.TG_PROXY_HOST,
+            port: process.env.TG_PROXY_PORT * 1
+          }
+        })
+      }
+      Object.assign(options, { agent })
+    }
     $.get(options, async (err, resp, data) => {
       try {
         if (err) {

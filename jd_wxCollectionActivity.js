@@ -1,23 +1,21 @@
 /*
 https://lzkj-isv.isvjcloud.com/wxgame/activity/8530275?activityId=
-
-TG https://t.me/duckjobs
-
 不能并发
-
 JD_CART_REMOVESIZE || 20; // 运行一次取消多全部已关注的商品。数字0表示不取关任何商品
 JD_CART_REMOVEALL || true;    //是否清空，如果为false，则上面设置了多少就只删除多少条
-
+RUN_CAR=ture 才运行脚本
+10 10 * * * 
+ACTIVITY_ID || "";  //活动ID  以逗号分隔  111,22,33
 */
 const $ = new Env('加购物车抽奖');
 const jdCookieNode = $.isNode() ? require('./jdCookie.js') : '';
 const notify = $.isNode() ? require('./sendNotify') : '';
 let cookiesArr = [], cookie = '', message = '' ,isPush = false;
-let activityIdList = ['bdacfcba95964d04b3e1cf0cb0e186dd', '6cb3e11671af40f9a8ab461d68995583', '892cb7fbfb844d0098e7f11d69bad6bd', 'cb052bef22334cd29089a39a52dfa1ed', '51de2cce01754429a6a0bc10c369ad8a', 'a1e3fb99b82345738aee4cc907224232', '6818e794a8d143328a819e0a22aced29']
+let activityIdList = []
 let lz_cookie = {}
 
 if (process.env.ACTIVITY_ID && process.env.ACTIVITY_ID != "") {
-    activityId = process.env.ACTIVITY_ID;
+    activityIdList = process.env.COLLECTION_ID.split(",");
 }
 
 if ($.isNode()) {
@@ -37,17 +35,19 @@ if ($.isNode()) {
 let doPush = process.env.DoPush || false; // 设置为 false 每次推送, true 跑完了推送
 let removeSize = process.env.JD_CART_REMOVESIZE || 20; // 运行一次取消多全部已关注的商品。数字0表示不取关任何商品
 let isRemoveAll = process.env.JD_CART_REMOVEALL || true;    //是否清空，如果为false，则上面设置了多少就只删除多少条
+let RUN_CAR = process.env.RUN_CAR || false;    //是否运行
 $.keywords = process.env.JD_CART_KEYWORDS || []
 $.keywordsNum = 0;
 !(async () => {
+	if (RUN_CAR) {
     if (!cookiesArr[0]) {
         $.msg($.name, '【提示】请先获取京东账号一cookie\n直接使用NobyDa的京东签到获取', 'https://bean.m.jd.com/bean/signIndex.action', { "open-url": "https://bean.m.jd.com/bean/signIndex.action" });
         return;
     }
     // activityIdList = await getActivityIdList('https://raw.githubusercontent.com/FKPYW/777777/master/code/wxCollectionActivity.json')
-    for(let a in activityIdList){
-        activityId = activityIdList[a];
-        console.log("开起第 "+ a +" 个活动，活动id："+activityId)
+    for (let a = 0; a < activityIdList.length; a++) {
+        let activityId = activityIdList[a];
+        console.log(`开起第 ${a + 1} 个活动，活动id：${activityId}`)
         for (let i = 0; i < cookiesArr.length; i++) {
             if (cookiesArr[i]) {
                 cookie = cookiesArr[i]
@@ -79,10 +79,10 @@ $.keywordsNum = 0;
                 $.drawInfoName = false
                 $.getPrize = null;
                 await addCart();
-                if($.drawInfoName === false || $.getPrize === null){
-                    //break
-                } else if($.getPrize != null && !$.getPrize.includes("京豆")){
-                    //break
+                if ($.drawInfoName === false || $.getPrize === null) {
+                    continue
+                } else if ($.getPrize != null && !$.getPrize.includes("京豆")) {
+                    continue
                 }
                 await $.wait(2000)
                 // await requireConfig();
@@ -112,6 +112,9 @@ $.keywordsNum = 0;
             $.msg($.name, '有点儿收获', message);
         }
     }
+	} else {
+		console.log('默认不执行，会加购很多商品，如需执行，请设置变量RUN_CAR=true')
+	}
 })()
     .catch((e) => {
         $.log('', `❌ ${$.name}, 失败! 原因: ${e}!`, '')
@@ -359,7 +362,13 @@ function random(min, max) {
     return Math.floor(Math.random() * (max - min)) + min;
 
 }
-function requireConfig(){
+
+function strToJson(str) {
+    var json = eval('(' + str + ')');
+    return json;
+}
+
+function requireConfig() {
     return new Promise(resolve => {
         if($.isNode() && process.env.JD_CART){
             if(process.env.JD_CART_KEYWORDS){
@@ -379,9 +388,9 @@ function getCart_xh(){
                 "User-Agent": "jdapp;JD4iPhone/167724 (iPhone; iOS 15.0; Scale/3.00)",
             },
         }
-        $.get(option, async(err, resp, data) => {
-            try{
-                data = JSON.parse(getSubstr(data, "window.cartData = ", "window._PFM_TIMING"));
+        $.get(option, async (err, resp, data) => {
+            try {
+                data = strToJson(getSubstr(data, "window.cartData = ", "window._PFM_TIMING"));
                 $.areaId = data.areaId;   // locationId的传值
                 $.traceId = data.traceId; // traceid的传值
                 venderCart = data.cart.venderCart;
@@ -477,7 +486,7 @@ function getActivityIdList(url) {
     return new Promise(resolve => {
         const options = {
             url: `${url}?${new Date()}`, "timeout": 10000, headers: {
-                "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Mobile/15E148 Safari/604.1 Edg/87.0.4280.88"
+            "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Mobile/15E148 Safari/604.1 Edg/87.0.4280.88"
             }
         };
         $.get(options, async (err, resp, data) => {
@@ -485,7 +494,7 @@ function getActivityIdList(url) {
                 if (err) {
                     $.log(err)
                 } else {
-                    if (data) data = JSON.parse(data)
+                if (data) data = JSON.parse(data)
                 }
             } catch (e) {
                 $.logErr(e, resp)

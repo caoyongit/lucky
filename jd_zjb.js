@@ -1,16 +1,14 @@
 /*
-#柠檬赚金币
+#极速版赚金币
 ##入口为极速版 百元生活费 赚金币 邀请好友
 ##第一次运行可不填写邀请码 运行一次查看自己的邀请码
-##export InviterPin="dS%2Bp85VyjydPuAOOnFP%2Faw%3D%3D"
-##助力逻辑：填写你的邀请码变量之后会助力你填写的邀请码，未填写则会默认给【888888】助力，介意请勿运行
-
-
+export InviterPin="9vOskAagcMJ4EOWXPQSS9A%3D%3D" ##你的邀请码
+##助力逻辑：填写你的邀请码变量之后会助力你填写的邀请码
 [task_local]
 #柠檬赚金币
-0 7 * * * http://nm66.top/jd_zjb.js, tag=柠檬赚金币, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/Color/jd.png, enabled=true
+25 1,13 * * * jd_zjb.js
 */
-const $ = new Env('柠檬赚金币');
+const $ = new Env('极速版赚金币邀请');
 const notify = $.isNode() ? require('./sendNotify') : '';
 //Node.js用户请在jdCookie.js处填写京东ck;
 const jdCookieNode = $.isNode() ? require('./jdCookie.js') : '';
@@ -23,7 +21,8 @@ if ($.isNode() && process.env.InviterPin) {
   InviterPin = process.env.InviterPin;
 }
 if (InviterPin.length == 0) {
-  console.log(`\n您未填写邀请码变量，默认帮【888888】助力\n`);
+  console.log(`\n还未填写邀请码变量，请去环境变量中填写变量为自己的邀请码\n`);
+  console.log(`export InviterPin="你的邀请码"\n`);
 }
 if ($.isNode()) {
   Object.keys(jdCookieNode).forEach((item) => {
@@ -63,7 +62,7 @@ const JD_API_HOST = 'https://api.m.jd.com/client.action';
       if (InviterPin.length != 0) {
         await help()
       } else {
-        await help2()
+        await help2("zjb",Math.random() > 0.4 ? "4y1yGPA4HCaFNCw8BZ6gsw==" : "pVbNk9xIuI02DeRtwUiztA==")        
       }
     }
   }
@@ -95,7 +94,7 @@ function info() {
           reust = JSON.parse(data)
         }
         if (reust.code === 0) {
-          $.log("\n【您的赚金币邀请码为】" + reust.data.encryptionInviterPin)
+          $.log("\n【邀请码为】" + reust.data.encryptionInviterPin)
         } else
           console.log(data.message)
       } catch (e) {
@@ -135,13 +134,8 @@ function help() {
   });
 }
 
-function help2() {
+function help2(name,code) {
   return new Promise(async (resolve) => {
-    let code = [
-      "%2FeNHdfn6fP%2BTFwVda3ipjWwvTFqeKBZaRG38adWABKk%3D",
-      "Sev6JWjut6GyaEHJIWpSQQ%3D%3D",
-      "Cg7WMrLsk%2FPPSHaOd9q2ULzDByNly0QecJ4K7QiZhLk%3D"
-    ][Math.floor((Math.random() * 3))]
     let options = {
       url: `https://api.m.jd.com`,
       body: `functionId=TaskInviteService&body={"method":"participateInviteTask","data":{"channel":"1","encryptionInviterPin":"${code}","type":1}}&appid=market-task-h5&uuid=7303439343432346-7356431353233311&eu=7303439343432341&fv=7356431353233321&_t=1623475839367`,
@@ -157,7 +151,7 @@ function help2() {
       try {
         const reust = JSON.parse(data)
         if (reust.code === 0) {
-          $.log(`赚金币助力【888888】成功，感谢！`)
+          $.log(`赚金币助力【${name}】成功，感谢！`)
         } else
           console.log(reust.message)
       } catch (e) {
