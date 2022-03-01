@@ -86,7 +86,8 @@ jd_notifyHe1pu.js
 jd_computer.js
 jd_ks_fruit.js
 jdCookie_xh.js
-jd_opencard*.js
+#会员开卡赢京豆
+jd_opencardjoyjd.js
 jd_bean_change_xh.js
 #月资产
 #jd_bean_change1.js
@@ -322,6 +323,9 @@ jd_mpdzcar_*.js
 #推一推
 jd_tyt.js
 ############不能跑的################
+
+#宠汪汪有就兑换
+jd_joy_reward.js
 # 通用游戏
 jd_game.js
 # 通用ID任务
@@ -363,6 +367,7 @@ jd_anjia.js
 jd_senbeans.js
 jd_cfd_help.js
 wx_*.js
+#小埋开卡
 jd_lzdz1_*.js
 jd_jinggengjcq_*.js
 jd_rush_*.js
