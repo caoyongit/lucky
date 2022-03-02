@@ -324,7 +324,7 @@ gua_HappyNewYear_Shares.js
 jd_mpdzcar.js
 jd_mpdzcar_*.js
 #推一推
-jd_tyt.js
+#jd_tyt.js
 ############不能跑的################
 
 #宠汪汪有就兑换
@@ -371,7 +371,7 @@ jd_senbeans.js
 jd_cfd_help.js
 wx_*.js
 #小埋开卡
-jd_lzdz1_*.js
+#jd_lzdz1_*.js
 jd_jinggengjcq_*.js
 jd_rush_*.js
 #重复的评价
