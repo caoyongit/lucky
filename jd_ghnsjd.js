@@ -1,14 +1,14 @@
 /*
 [task_local]
-#2.25-3.8女神节抽奖机活动
-15 7,14 * * * jd_bzlshdgt.js, tag=2.25-3.8女神节抽奖机活动, enabled=true
+#2.25-3.8个护女神价到抽奖机活动
+10 9 * * * jd_bzlshdgt.js, tag=2.25-3.8个护女神价到抽奖机活动, enabled=true
  */
-const $ = new Env('2.25-3.8女神节抽奖机活动');
+const $ = new Env('2.25-3.8个护女神价到抽奖机活动');
 const notify = $.isNode() ? require('./sendNotify') : '';
 //Node.js用户请在jdCookie.js处填写京东ck;
 const jdCookieNode = $.isNode() ? require('./jdCookie.js') : '';
 let jdNotify = true;//是否关闭通知，false打开通知推送，true关闭通知推送
-$.configCode = "02f742eb50cc4e2dbf98d6adc53bc492";
+$.configCode = "cd49ef3a71bd47db89c3c8b30fa89c44";
 //IOS等用户直接用NobyDa的jd cookie
 let cookiesArr = [], cookie = '', message;
 if ($.isNode()) {

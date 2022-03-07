@@ -1,7 +1,7 @@
 /*
 [task_local]
 #3.2-3.8食品女神价到抽奖机活动
-20 9,13 * * * jd_spnvjd.js, tag=3.2-3.8食品女神价到抽奖机活动, enabled=true
+10 9 * * * jd_spnvjd.js, tag=3.2-3.8食品女神价到抽奖机活动, enabled=true
  */
 const $ = new Env('3.2-3.8食品女神价到抽奖机活动');
 const notify = $.isNode() ? require('./sendNotify') : '';
@@ -86,7 +86,6 @@ async function run() {
             if (vo.hasFinish === true) {
                 continue;
             }
-			
             if (vo.taskName == '每日签到') {
                 console.log(`开始做${vo.taskName}:${vo.taskItem.itemName}`);
                 await doTask(vo.taskType, vo.taskItem.itemId, vo.id);
@@ -101,8 +100,8 @@ async function run() {
             }
             if (vo.taskType == 4) {
                 console.log(`开始做${vo.taskName}:${vo.taskItem.itemName}`);
-                //await doTask(vo.taskType, vo.taskItem.itemId, vo.id);
-                //await getReward(vo.taskType, vo.taskItem.itemId, vo.id);
+                await doTask(vo.taskType, vo.taskItem.itemId, vo.id);
+                await getReward(vo.taskType, vo.taskItem.itemId, vo.id);
             }
             if (vo.taskType == 2) {
                 console.log(`开始做${vo.taskName}:${vo.taskItem.itemName}`);
