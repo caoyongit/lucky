@@ -1,7 +1,7 @@
 /**
 38,签到类cron自行设置.
+18 3,10 * * * jd_38qd.js
 by：小手冰凉
-
 */
 const $ = new Env('3.8女神节签到');
 const notify = $.isNode() ? require('./sendNotify') : '';
