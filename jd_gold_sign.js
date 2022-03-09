@@ -8,7 +8,8 @@ by:小手冰凉 tg:@chianPLA
 ===================quantumultx================
 [task_local]
 #京东金榜
-11 6 * * * jd_gold_sign.js, tag=京东金榜, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/Color/jd.png, enabled=true
+13 7 * * * jd_gold_sign.js, tag=京东金榜, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/Color/jd.png, enabled=true
+
  */
 const $ = new Env('京东金榜');
 const notify = $.isNode() ? require('./sendNotify') : '';
