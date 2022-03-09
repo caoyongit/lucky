@@ -307,7 +307,12 @@ jd_farm_automation.js
 jd_indeps.sh
 jd_sharecode.sh
 jd_tyt_ck1.js
-
+jd_jsqdtx.js
+jd_farautomation.js
+jd_ms_sign.js
+jd_plusdraw.js
+#京喜工厂商品
+jx_factory_commodity.js
 ########过期活动##############
 
 # 运动户外盲盒
