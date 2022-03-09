@@ -1,7 +1,7 @@
 /**
 入口：主页-秒杀-狂撒三亿京豆
 2 2,13 * * * jd_ms_sign.js
-https://github.com/6dylan6/jdpro.git
+https://github.com/11111129/jdpro.git
 */
 const $ = new Env('狂撒3亿签到');
 const notify = $.isNode() ? require('./sendNotify') : '';
