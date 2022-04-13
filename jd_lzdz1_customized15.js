@@ -28,7 +28,7 @@ if ($.isNode()) {
         $.msg($.name, '【提示】请先获取京东账号一cookie\n直接使用NobyDa的京东签到获取', 'https://bean.m.jd.com/bean/signIndex.action', { "open-url": "https://bean.m.jd.com/bean/signIndex.action" });
         return;
     }
-    // authorCodeList = await getAuthorCodeList('https://gitee.com/11111131/Code/raw/master/lzdz1.json')
+    // authorCodeList = await getAuthorCodeList('https://gitee.com/fatelight/Code/raw/master/lzdz1.json')
     // if($.getAuthorCodeListerr === false){
     //     authorCodeList = [
     //         // '980f55cfc5494ff895ddf9a3b2d3ff3b',
@@ -60,8 +60,6 @@ if ($.isNode()) {
                 '36766785d4364f47a4e8b4f109944949',
                 '043afd7b7b67410fbb69f69512129e86',
                 '53e49acd98ea42b19900bd6135fc63fe',
-                '73d9fdcf1a864a3cb18706fb53144aec',
-                '079d701b28254b3cbbf929df1e42cbc2',
             ]
             // $.authorCode = authorCodeList[random(0, authorCodeList.length)]
             $.authorCode = ownCode ? ownCode : authorCodeList[random(0, authorCodeList.length)]
