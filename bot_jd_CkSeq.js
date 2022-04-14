@@ -1,11 +1,10 @@
 /*
 cron "0 0 * * *" jd_CheckCkSeq.js, tag:CK顺序调试工具by-ccwav
  */
-const $ = new Env("CK顺序调试工具");
+const $ = new Env("机器人专用CK状态工具");
 const {
     getEnvs
 } = require('./ql');
-const notify = $.isNode() ? require('./sendNotify') : '';
 const jdCookieNode = $.isNode() ? require("./jdCookie.js") : "";
 let cookiesArr = [];
 if ($.isNode()) {
@@ -13,29 +12,14 @@ if ($.isNode()) {
         cookiesArr.push(jdCookieNode[item])
     })
 }
-let WP_APP_TOKEN_ONE = "";
-if ($.isNode()) {
-	if (process.env.WP_APP_TOKEN_ONE) {		
-		WP_APP_TOKEN_ONE = process.env.WP_APP_TOKEN_ONE;
-	}	
-}
 
 let arrCkPtPin = [];
 let arrEnvPtPin = [];
 let arrEnvStatus = [];
 let arrEnvOnebyOne = [];
+let arrEnvRemark = [];
 let strCk = "";
 let strNoFoundCk = "";
-let strMessage = "";
-let strNotify = "";
-if ($.isNode() && process.env.SEQCK_DisableCKNOTIFY) {	
-	strNotify=process.env.SEQCK_DisableCKNOTIFY;
-	console.log(`检测到设定了公告,禁用的CK将推送信息...`);
-	strNotify = `【✨✨✨✨公告✨✨✨✨】\n`+strNotify;
-	console.log(strNotify+"\n");	
-}else{
-	WP_APP_TOKEN_ONE = "";
-}
 
 const fs = require('fs');
 let TempCKUid = [];
@@ -60,6 +44,8 @@ if (UidFileexists) {
             arrEnvStatus.push(envs[i].status);
 			var struuid=getuuid(envs[i].remarks,tempptpin)
 			arrEnvOnebyOne.push(struuid);
+			var strRemark=getRemark(envs[i].remarks)
+			arrEnvRemark.push(strRemark);			
         }
     }
 
@@ -70,9 +56,13 @@ if (UidFileexists) {
             var intSeq = inArray(tempptpin, arrEnvPtPin);
             if (intSeq != -1) {                
                 arrCkPtPin.push(tempptpin);
-                strCk += "【"+(intSeq+1) + "】" + tempptpin ;
+				if (arrEnvRemark[intSeq]) 
+					strCk += "【"+(intSeq+1) + "】" + arrEnvRemark[intSeq];
+				else
+					strCk += "【"+(intSeq+1) + "】" + tempptpin ;		
+                
 				if (arrEnvOnebyOne[intSeq]) {
-					strCk += "(已启用一对一推送)"
+					strCk += "(一对一)"
 				}
 				strCk +="\n";
             }
@@ -83,32 +73,25 @@ if (UidFileexists) {
         var tempptpin = arrEnvPtPin[i];
         var intSeq = inArray(tempptpin, arrCkPtPin);
         if (intSeq == -1) {
-            strNoFoundCk += "【" + (i + 1) + "】" + tempptpin;
+			if (arrEnvRemark[i]) 
+				strNoFoundCk += "【" + (i + 1) + "】" + arrEnvRemark[i];
+			else
+				strNoFoundCk += "【" + (i + 1) + "】" + tempptpin;
+			
             if (arrEnvStatus[i] == 1) {
-                strNoFoundCk += "(已禁用)"
-                if ($.isNode() && WP_APP_TOKEN_ONE) {
-                    await notify.sendNotifybyWxPucher("账号下线通知", strNotify, tempptpin);
-					await $.wait(1000);
-                }
+                strNoFoundCk += "(禁用状态)"               
             }
             if (arrEnvOnebyOne[i]) {
-                strNoFoundCk += "(已启用一对一推送)"
+                strNoFoundCk += "(一对一)"
             }
             strNoFoundCk += "\n";
 
         }
     }
-	
+	console.log("😀今日正常的账号:\n" + strCk);
+	console.log("分割行");	
     if (strNoFoundCk) {
-        console.log("没有出现在今日CK队列中的账号: \n" + strNoFoundCk);
-		strMessage+="没有出现在今日CK队列中的账号: \n" + strNoFoundCk;
-    }
-	
-	console.log("\n今日执行任务的账号顺序: \n" + strCk);	
-	strMessage+="\n今日执行任务的账号顺序: \n" + strCk;
-	
-    if ($.isNode()) {
-        await notify.sendNotify(`${$.name}`, strMessage);
+        console.log("\n😒没有出现在CK队列中的账号:\n" + strNoFoundCk);
     }
     return;
 })()
@@ -124,7 +107,6 @@ function inArray(search, array) {
     }
     return parseInt(lnSeq);
 }
-
 
 function getuuid(strRemark, PtPin) {
     var strTempuuid = "";
@@ -155,6 +137,21 @@ function getuuid(strRemark, PtPin) {
         }
     }
     return strTempuuid;
+}
+
+function getRemark(strRemark) {
+    var strTempRemark = "";
+    if (strRemark) {
+        var Tempindex = strRemark.indexOf("@@");
+        if (Tempindex != -1) {
+			var TempRemarkList = strRemark.split("@@");
+			strTempRemark=TempRemarkList[0];            
+        } else{
+			strTempRemark=strRemark;
+		}
+    }
+   
+    return strTempRemark;
 }
 
 // prettier-ignore
