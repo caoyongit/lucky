@@ -84,7 +84,8 @@ jd_dreamFactory2.js
 jd_selectionOfficer.js
 jd_cfd2.js
 jd_notifyHe1pu.js
-jd_computer.js
+#电脑配件
+#jd_computer.js
 jd_ks_fruit.js
 jdCookie_xh.js
 #会员开卡赢京豆
@@ -181,6 +182,9 @@ jd_jx_factory.js
 
 m_*.js
 ######重复脚本#######
+#清空购物车
+gua_cleancart_ddo.js
+jd_gua_cleancart_Panda.js
 jd_15-8.js
 jd_speed_10_4.js
 jd_speed_19_6.js
