@@ -182,6 +182,7 @@ jd_jx_factory.js
 
 m_*.js
 ######重复脚本#######
+jd_??-?.js
 #集魔方
 jd_jmofang.js
 bot_*.js
@@ -333,6 +334,8 @@ jd_plusdraw.js
 #京喜工厂商品
 jx_factory_commodity.js
 ########过期活动##############
+#特务集卡
+jd_superBrandJK.js
 gua_opencard129.js
 gua_opencard13?.js
 jd_carnivalcity.js
